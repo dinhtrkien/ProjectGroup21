@@ -1,0 +1,22 @@
+﻿  BaseObject.cpp
+C:\Users\Admin\source\repos\RPGGame\commonfunc.h(36,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Admin\source\repos\RPGGame\commonfunc.h(49,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  commonfunc.cpp
+C:\Users\Admin\source\repos\RPGGame\commonfunc.h(36,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Admin\source\repos\RPGGame\commonfunc.h(49,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  game_map.cpp
+C:\Users\Admin\source\repos\RPGGame\commonfunc.h(36,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Admin\source\repos\RPGGame\commonfunc.h(49,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  main.cpp
+C:\Users\Admin\source\repos\RPGGame\commonfunc.h(36,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Admin\source\repos\RPGGame\commonfunc.h(49,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  mainObject.cpp
+C:\Users\Admin\source\repos\RPGGame\commonfunc.h(36,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Admin\source\repos\RPGGame\commonfunc.h(49,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+C:\Users\Admin\source\repos\RPGGame\mainObject.cpp(192,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Admin\source\repos\RPGGame\mainObject.cpp(202,29): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  timer.cpp
+C:\Users\Admin\source\repos\RPGGame\commonfunc.h(36,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Admin\source\repos\RPGGame\commonfunc.h(49,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  Generating Code...
+  RPGGame.vcxproj -> C:\Users\Admin\source\repos\RPGGame\Debug\RPGGame.exe
