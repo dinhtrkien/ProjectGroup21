@@ -192,6 +192,7 @@ void MainObject::HandleInputAction(SDL_Event events, SDL_Renderer* screen)
 			int dx, dy;
 			SDL_PumpEvents();
 			Button = SDL_GetMouseState(&dx, &dy);
+			p_bullet->set_bullet_range(300);
 			p_bullet->set_des_x(dx);
 			p_bullet->set_des_y(dy);
 			p_bullet->set_first_x(this->rect_.x);

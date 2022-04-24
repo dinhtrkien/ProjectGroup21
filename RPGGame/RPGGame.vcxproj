@@ -151,6 +151,7 @@
     <ClCompile Include="game_map.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainObject.cpp" />
+    <ClCompile Include="mouse.cpp" />
     <ClCompile Include="timer.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +160,7 @@
     <ClInclude Include="commonfunc.h" />
     <ClInclude Include="game_map.h" />
     <ClInclude Include="mainObject.h" />
+    <ClInclude Include="mouse.h" />
     <ClInclude Include="timer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

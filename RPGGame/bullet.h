@@ -34,6 +34,9 @@ public:
 	void set_direct_angle(const double& angle) { direct_angle = angle; } // 
 	double get_direct_angle() const { return direct_angle; }
 
+	void set_bullet_range(const int& range) { bullet_range = range; }
+	int get_bullet_range() const { return bullet_range; }
+
 	void HandleMove(const int& x_border, const int& y_border);
 private:
 	double direct_angle;
@@ -44,6 +47,7 @@ private:
 	int des_x_;// toa do dich vien dan
 	int des_y_;// toa do dich vien dan
 	bool is_move_; // trang thai vien dan
+	int bullet_range; // tam xa cua vien dan
 };
 
 #endif // !BULLET_H

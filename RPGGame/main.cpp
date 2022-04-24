@@ -4,6 +4,7 @@
 #include "mainObject.h"
 #include "game_map.h"
 #include "timer.h"
+#include "mouse.h"
 
 BaseObject g_background;
 bool InitData()
@@ -74,6 +75,8 @@ int main(int argc, char* argv[])
     game_map.LoadMap(map01);
     game_map.LoadTiles(g_screen);
 
+    Mouse mouse;
+
     MainObject p_player;
     p_player.LoadImage("img/player_right.png", g_screen);
     p_player.Main_Set_clip();
@@ -99,7 +102,9 @@ int main(int argc, char* argv[])
 
         game_map.DrawMap(g_screen);
 
-        
+        mouse.update();
+        mouse.DrawMouse(g_screen);
+
         p_player.HandleBullet(g_screen);
         p_player.Show(g_screen);
 
