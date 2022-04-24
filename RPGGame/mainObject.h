@@ -4,8 +4,10 @@
 
 #include "commonfunc.h"
 #include "BaseObject.h"
+#include "bullet.h"
+#include <vector>
 
-#define PLAYER_SPEED 5
+#define PLAYER_SPEED 8;
 
 class MainObject : public BaseObject
 {
@@ -33,7 +35,15 @@ public:
 		map_y_ = map_y;
 	}
 	void CenterEntityOnMap(Map& map_data);
+
+	void set_bullet_list(std::vector<Bullet*> bullet_list)
+	{
+		p_bullet_list_ = bullet_list;
+	}
+	std::vector<Bullet*> get_bullet_list() const { return p_bullet_list_; }
+	void HandleBullet(SDL_Renderer* des);
 private:
+	std::vector<Bullet*> p_bullet_list_;
 	float x_val_;
 	float y_val_;
 

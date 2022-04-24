@@ -15,7 +15,7 @@ public:
 	SDL_Texture* GetObject() const { return p_object_; }
 
 	virtual bool LoadImage(std::string path, SDL_Renderer* screen);
-	void Render(SDL_Renderer* des, const SDL_Rect* clip = NULL);
+	void Render(SDL_Renderer* des, const SDL_Rect* clip = NULL, const double angle=0);
 
 	void Free();
 protected:

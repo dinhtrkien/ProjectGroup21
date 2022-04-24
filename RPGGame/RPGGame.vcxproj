@@ -146,6 +146,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BaseObject.cpp" />
+    <ClCompile Include="bullet.cpp" />
     <ClCompile Include="commonfunc.cpp" />
     <ClCompile Include="game_map.cpp" />
     <ClCompile Include="main.cpp" />
@@ -154,6 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseObject.h" />
+    <ClInclude Include="bullet.h" />
     <ClInclude Include="commonfunc.h" />
     <ClInclude Include="game_map.h" />
     <ClInclude Include="mainObject.h" />

@@ -1,1 +1,2 @@
 C:\Users\Admin\source\repos\RPGGame\Debug\RPGGame.exe
+C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\Debug\RPGGame.exe

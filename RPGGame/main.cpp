@@ -15,7 +15,7 @@ bool InitData()
         return false;
     }
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
-    g_window = SDL_CreateWindow("GAME DIT NHAU CUC PHE", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+    g_window = SDL_CreateWindow("GAME DIT NHAU CUC PHE", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_RESIZABLE);
 
     if (g_window == NULL)
     {
@@ -87,28 +87,34 @@ int main(int argc, char* argv[])
             {
                 isquit = true;
             }
-            
             p_player.HandleInputAction(g_event, g_screen);
-            SDL_SetRenderDrawColor(g_screen, 255, 255, 255, 255);
-            SDL_RenderClear(g_screen);
-            g_background.Render(g_screen, NULL);
-
-            game_map.DrawMap(g_screen);
-
-            p_player.Show(g_screen);
-
-            SDL_RenderPresent(g_screen);
-            int real_time = fps_time.get_ticks();
-            int time_one_frame = 1000 / FRAME_PER_SECOND;
-
-            if (real_time < time_one_frame)
-            {
-                int delay_time = time_one_frame - real_time;
-                SDL_Delay(delay_time);
-            }
+            
         }
        
+        SDL_SetRenderDrawColor(g_screen, 255, 255, 255, 255);
+        SDL_RenderClear(g_screen);
+        g_background.Render(g_screen, NULL);
+
+        
+
+        game_map.DrawMap(g_screen);
+
+        
+        p_player.HandleBullet(g_screen);
+        p_player.Show(g_screen);
+
+        SDL_RenderPresent(g_screen);
+        int real_time = fps_time.get_ticks();
+        int time_one_frame = 1000 / FRAME_PER_SECOND;
+
+        if (real_time < time_one_frame)
+        {
+            int delay_time = time_one_frame - real_time;
+            SDL_Delay(delay_time);
+
+        }
     }
+    
     close();
     return 0;
 }
