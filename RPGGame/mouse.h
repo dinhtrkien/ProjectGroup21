@@ -11,7 +11,7 @@ public:
 	Mouse();
 	~Mouse();
 	void update(); // lay vi tri cua chuot de render
-	void DrawMouse(SDL_Renderer* des); // render hong tam vao thoi
+	void DrawMouse(SDL_Renderer* des); // render hong tam vao vi tri cua con chuot
 };
 
 #endif // !MOUSE_H
