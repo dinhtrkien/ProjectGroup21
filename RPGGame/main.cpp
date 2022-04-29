@@ -1,10 +1,11 @@
 #include <Windows.h>
 #include "commonfunc.h"
 #include "BaseObject.h"
-#include "mainObject.h"
+#include "player.h"
 #include "game_map.h"
 #include "timer.h"
 #include "mouse.h"
+#include "enemy.h"
 
 BaseObject g_background;
 bool InitData()
@@ -77,9 +78,14 @@ int main(int argc, char* argv[])
 
     Mouse mouse;
 
-    MainObject p_player;
+    Player p_player;
     p_player.LoadImage("img/player_right.png", g_screen);
     p_player.Main_Set_clip();
+
+    Enemy g_enemy;
+    g_enemy.LoadImage("img/player_down.png", g_screen);
+    g_enemy.Make_Animation();
+
     bool isquit = false;
     while (!isquit)
     {
@@ -91,7 +97,6 @@ int main(int argc, char* argv[])
                 isquit = true;
             }
             p_player.HandleInputAction(g_event, g_screen);
-            
         }
        
         SDL_SetRenderDrawColor(g_screen, 255, 255, 255, 255);
@@ -105,8 +110,13 @@ int main(int argc, char* argv[])
         mouse.update();
         mouse.DrawMouse(g_screen);
 
+       
         p_player.HandleBullet(g_screen);
         p_player.Show(g_screen);
+        
+       
+        g_enemy.Make_Action(p_player.GetRect().x, p_player.GetRect().y, g_screen);
+        g_enemy.Show(g_screen);
 
         SDL_RenderPresent(g_screen);
         int real_time = fps_time.get_ticks();

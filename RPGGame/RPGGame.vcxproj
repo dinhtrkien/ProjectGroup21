@@ -148,9 +148,10 @@
     <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="bullet.cpp" />
     <ClCompile Include="commonfunc.cpp" />
+    <ClCompile Include="enemy.cpp" />
     <ClCompile Include="game_map.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="mainObject.cpp" />
+    <ClCompile Include="player.cpp" />
     <ClCompile Include="mouse.cpp" />
     <ClCompile Include="timer.cpp" />
   </ItemGroup>
@@ -158,8 +159,9 @@
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="bullet.h" />
     <ClInclude Include="commonfunc.h" />
+    <ClInclude Include="enemy.h" />
     <ClInclude Include="game_map.h" />
-    <ClInclude Include="mainObject.h" />
+    <ClInclude Include="player.h" />
     <ClInclude Include="mouse.h" />
     <ClInclude Include="timer.h" />
   </ItemGroup>
