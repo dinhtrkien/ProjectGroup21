@@ -4,6 +4,7 @@
 
 #include "commonfunc.h"
 #include "BaseObject.h"
+#include "explosion.h"
 
 class Bullet : public BaseObject
 {
@@ -39,6 +40,7 @@ public:
 
 	void HandleMove(const int& x_border, const int& y_border);
 private:
+	Explosion boom;
 	double direct_angle;
 	int x_speed_;// van toc theo x
 	int y_speed_;// van toc theo y

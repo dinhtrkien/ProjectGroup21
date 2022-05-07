@@ -6,6 +6,7 @@
 #include "commonfunc.h"
 #include "BaseObject.h"
 #include "player.h"
+#include "bullet.h"
 
 class Enemy :public BaseObject
 {
@@ -19,6 +20,12 @@ public:
 		WALK_UP = 2,
 		WALK_DOWN = 3,
 	};
+
+	void set_width_frame(const int& w) { width_frame_ = w; }
+	void set_height_frame(const int& h) { height_frame_ = h; }
+
+	int get_width_frame() const { return width_frame_; }
+	int get_height_frame() const { return height_frame_; }
 
 	void set_is_move(const bool& isMove) { is_move = isMove; } // cai dat trang thai di chuyen: true-> dan duoc ban/ false->dan khong ban
 	bool get_is_move() const { return is_move; } // lay trang thai vien dan
@@ -41,11 +48,32 @@ public:
 	int get_des_y() const { return des_y_; } // lay toa do diem den theo y
 	bool LoadImage(std::string path, SDL_Renderer* screen);
 	void Show(SDL_Renderer* des);
-	void Make_Action(const int &dx, const int &dy, SDL_Renderer* screen);
+	void Make_Action(const int &dx, const int &dy, SDL_Renderer* screen, std::vector<Enemy*> enemy_list);
 	void Make_Animation();
 
+	void set_bullet_list(std::vector<Bullet*> bullet_list)
+	{
+		e_bullet_list_ = bullet_list;
+	}
+	std::vector<Bullet*> get_bullet_list() const { return e_bullet_list_; }
 	
+	void SetupBullet(SDL_Renderer* screen, const int& dx, const int& dy);
+	void HandleBullet(SDL_Renderer* des);
+
+	void LoadBullet(SDL_Renderer* screen)
+	{
+		Bullet* p_bullet = new Bullet();
+		p_bullet->LoadImage("img/bullet12.png", screen);
+		p_bullet->SetRect(rect_.x+32, rect_.y+32);
+		e_bullet_list_.push_back(p_bullet);
+
+	}
+
+	void set_hp(const int& _hp) { hp = _hp; }
+	int get_hp() { return hp; }
+
 private:
+	std::vector<Bullet*> e_bullet_list_;
 	int x_pos_;
 	int y_pos_;
 	int x_speed_;
@@ -64,6 +92,8 @@ private:
 	int des_y_;
 
 	bool is_move;
+
+	int hp;
 };
 
 #endif // !ENEMY_H

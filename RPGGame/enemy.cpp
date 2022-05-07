@@ -5,7 +5,7 @@
 
 Enemy::Enemy()
 {
-	x_pos_ = 0;
+	x_pos_ = rand() % 1000;
 	y_pos_ = 0;
 	x_speed_ = 0;
 	y_speed_ = 0;
@@ -20,6 +20,7 @@ Enemy::Enemy()
 	first_y_ = 0;
 
 	is_move = false;
+	hp = 20;
 }
 
 Enemy::~Enemy()
@@ -96,14 +97,54 @@ void Enemy::Show(SDL_Renderer* des)
 	SDL_RenderCopy(des, p_object_, current_clip, &renderQuad);
 }
 
-void Enemy::Make_Action(const int &dx, const int &dy, SDL_Renderer* screen)
+void Enemy::Make_Action(const int &dx, const int &dy, SDL_Renderer* screen, std::vector<Enemy*> enemy_list)
 {
 		set_is_move(true);
 		set_des_x(dx);
 		set_des_y(dy);
 		set_first_x(rect_.x);
 		set_first_y(rect_.y);
-		if (pow(des_x_ - first_x_, 2) + pow(des_y_ - first_y_, 2) < 2500) set_is_move(false);
-		set_x_speed(int(8 * ((get_des_x() - get_first_x()) / sqrt(pow(get_des_x() - get_first_x(), 2) + pow(get_des_y() - get_first_y(), 2)))));
-		set_y_speed(int(8 * ((get_des_y() - get_first_y()) / sqrt(pow(get_des_x() - get_first_x(), 2) + pow(get_des_y() - get_first_y(), 2)))));
+		if (pow(des_x_ - first_x_, 2) + pow(des_y_ - first_y_, 2) <= 250000) {
+				set_is_move(false);
+		}
+		
+			set_x_speed(int(8 * ((get_des_x() - get_first_x()) / sqrt(pow(get_des_x() - get_first_x(), 2) + pow(get_des_y() - get_first_y(), 2)))));
+			set_y_speed(int(8 * ((get_des_y() - get_first_y()) / sqrt(pow(get_des_x() - get_first_x(), 2) + pow(get_des_y() - get_first_y(), 2)))));
+}
+
+void Enemy::SetupBullet(SDL_Renderer* screen, const int& dx, const int& dy)
+{
+	Bullet* p_bullet = e_bullet_list_[0];
+	p_bullet->SetRect(rect_.x+32, rect_.y+32);
+	p_bullet->set_is_move(true); // dan duoc ban
+	p_bullet->set_bullet_range(500);
+	p_bullet->set_des_x(dx);
+	p_bullet->set_des_y(dy);
+	p_bullet->set_first_x(this->rect_.x);
+	p_bullet->set_first_y(this->rect_.y);
+	p_bullet->set_x_speed(int(20 * ((p_bullet->get_des_x() - p_bullet->get_first_x()) / sqrt(pow(p_bullet->get_des_x() - p_bullet->get_first_x(), 2) + pow(p_bullet->get_des_y() - p_bullet->get_first_y(), 2)))));
+	p_bullet->set_y_speed(int(20 * (p_bullet->get_des_y() - p_bullet->get_first_y()) / sqrt(pow(p_bullet->get_des_x() - p_bullet->get_first_x(), 2) + pow(p_bullet->get_des_y() - p_bullet->get_first_y(), 2))));
+	p_bullet->set_direct_angle(atan2(double(-this->rect_.y + dy), double(-this->rect_.x + dx)) * 180 / M_PI); // set huong ban cho mui ten
+	e_bullet_list_[0] = p_bullet;
+}
+
+void Enemy::HandleBullet(SDL_Renderer* des)
+{
+	for (int i = 0; i < e_bullet_list_.size(); i++)
+	{
+		Bullet* p_bullet = e_bullet_list_[i];
+		if (p_bullet != NULL)
+		{
+			if (p_bullet->get_is_move() == true)
+			{
+				p_bullet->HandleMove(SCREEN_WIDTH, SCREEN_HEIGHT);
+				p_bullet->Render(des, NULL, p_bullet->get_direct_angle());
+			}
+			else
+			{
+				p_bullet->set_is_move(true);
+				p_bullet->SetRect(rect_.x, rect_.y);
+			}
+		}
+	}
 }

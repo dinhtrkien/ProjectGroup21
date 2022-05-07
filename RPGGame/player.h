@@ -7,7 +7,7 @@
 #include "bullet.h"
 #include <vector>
 
-#define PLAYER_SPEED 8;
+#define PLAYER_SPEED 20;
 
 class Player : public BaseObject
 {
@@ -39,6 +39,17 @@ public:
 	}
 	std::vector<Bullet*> get_bullet_list() const { return p_bullet_list_; }
 	void HandleBullet(SDL_Renderer* des);
+
+	void Free_Bullet(const int& i)
+	{
+		Bullet* clone = p_bullet_list_[i];
+		p_bullet_list_.erase(p_bullet_list_.begin(), p_bullet_list_.begin() + i);
+		if (clone != NULL)
+		{
+			delete clone;
+			clone = NULL;
+		}
+	}
 
 	void set_hp_(int _hp) { hp = _hp; }
 	int get_hp_() const { return hp; }

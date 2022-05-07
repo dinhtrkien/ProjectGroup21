@@ -7,8 +7,8 @@ Player::Player()
 	this->frame_ = 0;
 	this->x_speed_ = 0;
 	this->y_speed_ = 0;
-	this->x_pos_ = 100;
-	this->y_pos_ = 100;
+	this->x_pos_ = 1000;
+	this->y_pos_ = 500;
 	this->map_x_ = 0;
 	this->map_y_ = 0;
 	this->width_frame_ = 0;
@@ -186,8 +186,8 @@ void Player::HandleInputAction(SDL_Event events, SDL_Renderer* screen)
 		if (events.button.button == SDL_BUTTON_LEFT)
 		{
 			Bullet* p_bullet = new Bullet();
-			p_bullet->LoadImage("img/bullet.png", screen);
-			p_bullet->SetRect(this->rect_.x, this->rect_.y); // lay vi tri render
+			p_bullet->LoadImage("img/bullet12.png", screen);
+			p_bullet->SetRect(this->rect_.x+32, this->rect_.y+32); // lay vi tri render
 			p_bullet->set_is_move(true); // dan duoc ban
 			Uint32 Button;
 			int dx, dy;
@@ -226,6 +226,7 @@ void Player::HandleBullet(SDL_Renderer* des)
 				{
 					delete p_bullet;
 				}
+				
 			}
 		}
 	}

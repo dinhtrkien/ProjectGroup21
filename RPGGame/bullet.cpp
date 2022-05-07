@@ -26,6 +26,5 @@ void Bullet::HandleMove(const int& x_border, const int& y_border)
 	if (rect_.x>x_border||rect_.x<=0||rect_.y>y_border||rect_.y<=0|| sqrt(pow(rect_.x - first_x_,2) + pow(rect_.y - first_y_, 2))>bullet_range)
 	{
 		is_move_ = false;
-
 	} // neu dan cham thanh hoac quang duong ban ra lon hon bullet_range thi cho dung lai
 }

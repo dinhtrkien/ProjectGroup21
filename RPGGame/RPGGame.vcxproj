@@ -149,6 +149,7 @@
     <ClCompile Include="bullet.cpp" />
     <ClCompile Include="commonfunc.cpp" />
     <ClCompile Include="enemy.cpp" />
+    <ClCompile Include="explosion.cpp" />
     <ClCompile Include="game_map.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="player.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="bullet.h" />
     <ClInclude Include="commonfunc.h" />
     <ClInclude Include="enemy.h" />
+    <ClInclude Include="explosion.h" />
     <ClInclude Include="game_map.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="mouse.h" />
