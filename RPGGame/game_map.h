@@ -1,4 +1,3 @@
-#pragma once
 #ifndef GAME_MAP_H_
 #define GAME_MAP_H_
 

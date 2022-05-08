@@ -8,6 +8,7 @@
 #include "mouse.h"
 #include "enemy.h"
 #include "explosion.h"
+#include "Collision.h"
 
 BaseObject g_background;
 bool InitData()
@@ -64,11 +65,6 @@ void close()
     SDL_Quit();
 }
 
-bool CheckBulletOnTarget(const SDL_Rect &a, const SDL_Rect &b) // Kiem tra xem dan a co ban trung b hay khong
-{
-    int max_range = sqrt(pow(b.h, 2) + pow(b.w, 2)) / 2;
-    if (sqrt(pow(a.x+6 - b.x-32, 2) + pow(a.y+6 - b.y-32, 2)) < max_range) return true; else return false;
-}
 
 int Distance(const SDL_Rect& a, const SDL_Rect& b)
 {
@@ -87,6 +83,11 @@ std::vector<Enemy*> MakeEnemyList(const int& n)
     }
     return a;
 }
+
+
+
+
+
 
 int main(int argc, char* argv[])
 {
@@ -129,13 +130,14 @@ int main(int argc, char* argv[])
     rect.w = 204;
 
     SDL_Rect HP = { 2,2,200,26 };
-
-    
+	
     int time_per_shoot=0;
     int time_shoot_start=0;
 
     bool isquit = false;
-    while (!isquit)
+    
+	
+	while (!isquit)
     {
         fps_time.start();
         time_shoot.start();
@@ -185,7 +187,7 @@ int main(int argc, char* argv[])
 
                 Enemy_List[i]->HandleBullet(g_screen);
 
-                if (CheckBulletOnTarget(Enemy_List[i]->get_bullet_list()[0]->GetRect(), p_player.GetRect())) 
+                if (Collision::AABB(Enemy_List[i]->get_bullet_list()[0]->GetRect(), p_player.GetRect())) 
                 { 
                     Enemy_List[i]->get_bullet_list()[0]->set_is_move(false); 
                     p_player.set_hp_(p_player.get_hp_() - 5);
@@ -219,7 +221,7 @@ int main(int argc, char* argv[])
                 Enemy_Rect.y = e_clone->GetRect().y;
                 Enemy_Rect.w = e_clone->get_width_frame();
                 Enemy_Rect.h = e_clone->get_height_frame();
-                if (CheckBulletOnTarget(Bullet_Rect, Enemy_Rect)) // Neu dan ban trung
+                if (Collision::AABB(Bullet_Rect, Enemy_Rect)) // Neu dan ban trung
                 {
                     for (int k = 0; k < 16; k++)
                     {
