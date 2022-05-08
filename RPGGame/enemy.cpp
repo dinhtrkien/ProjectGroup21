@@ -25,7 +25,7 @@ Enemy::Enemy()
 
 Enemy::~Enemy()
 {
-
+	e_bullet_list_.clear();
 }
 
 bool Enemy::LoadImage(std::string path, SDL_Renderer* screen)

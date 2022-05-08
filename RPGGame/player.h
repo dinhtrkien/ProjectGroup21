@@ -43,7 +43,7 @@ public:
 	void Free_Bullet(const int& i)
 	{
 		Bullet* clone = p_bullet_list_[i];
-		p_bullet_list_.erase(p_bullet_list_.begin(), p_bullet_list_.begin() + i);
+		p_bullet_list_.erase(p_bullet_list_.begin() + i);
 		if (clone != NULL)
 		{
 			delete clone;
