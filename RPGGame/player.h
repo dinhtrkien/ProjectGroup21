@@ -1,4 +1,3 @@
-#pragma once
 #ifndef PLAYER_H_
 #define PLAYER_H_
 
@@ -7,7 +6,7 @@
 #include "bullet.h"
 #include <vector>
 
-#define PLAYER_SPEED 20;
+#define PLAYER_SPEED 10;
 
 class Player : public BaseObject
 {

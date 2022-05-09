@@ -1,4 +1,3 @@
-#pragma once
 #ifndef COMMON_FUNCTION_H_
 #define COMMON_FUNCTION_H_
 
