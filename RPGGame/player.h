@@ -6,7 +6,7 @@
 #include "bullet.h"
 #include <vector>
 
-#define PLAYER_SPEED 20;
+#define PLAYER_SPEED 10;
 
 class Player : public BaseObject
 {

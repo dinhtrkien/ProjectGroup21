@@ -1,5 +1,5 @@
-#ifndef COLLISION_H
-#define COLLISION_H
+#ifndef COLLISION_H_
+#define COLLISION_H_
 
 #include "SDL.h"
 
@@ -10,4 +10,4 @@ public:
 	
 };
 
-#endif // COLLISION_H
+#endif // COLLISION_H_
