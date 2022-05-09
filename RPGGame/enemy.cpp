@@ -21,6 +21,7 @@ Enemy::Enemy()
 
 	is_move = false;
 	hp = 20;
+	Max_hp = 20;
 }
 
 Enemy::~Enemy()
@@ -95,6 +96,7 @@ void Enemy::Show(SDL_Renderer* des)
 	SDL_Rect renderQuad = { rect_.x, rect_.y, width_frame_, height_frame_ };
 
 	SDL_RenderCopy(des, p_object_, current_clip, &renderQuad);
+
 }
 
 void Enemy::Make_Action(const int &dx, const int &dy, SDL_Renderer* screen, std::vector<Enemy*> enemy_list)
@@ -104,7 +106,7 @@ void Enemy::Make_Action(const int &dx, const int &dy, SDL_Renderer* screen, std:
 		set_des_y(dy);
 		set_first_x(rect_.x);
 		set_first_y(rect_.y);
-		if (pow(des_x_ - first_x_, 2) + pow(des_y_ - first_y_, 2) <= 250000) {
+		if (pow(des_x_ - first_x_, 2) + pow(des_y_ - first_y_, 2) <= 90000) {
 				set_is_move(false);
 		}
 		

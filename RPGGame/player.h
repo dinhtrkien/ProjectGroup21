@@ -51,8 +51,14 @@ public:
 		}
 	}
 
+	int get_width_frame() { return width_frame_; }
+	int get_height_frame() { return height_frame_; }
+
 	void set_hp_(int _hp) { hp = _hp; }
 	int get_hp_() const { return hp; }
+
+	void set_damage(const int& _damage) { damage = _damage; }
+	int get_damage() { return damage; }
 private:
 	std::vector<Bullet*> p_bullet_list_;
 	float x_speed_;
@@ -75,5 +81,6 @@ private:
 	int status_; // trang thai tien hoac lui
 
 	int hp;
+	int damage;
 };
 #endif // !MAIN_OBJECT_H_

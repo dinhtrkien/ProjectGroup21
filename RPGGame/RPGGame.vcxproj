@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="bullet.cpp" />
+    <ClCompile Include="Collision.cpp" />
     <ClCompile Include="commonfunc.cpp" />
     <ClCompile Include="enemy.cpp" />
     <ClCompile Include="explosion.cpp" />
@@ -159,6 +160,7 @@
   <ItemGroup>
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="bullet.h" />
+    <ClInclude Include="Collision.h" />
     <ClInclude Include="commonfunc.h" />
     <ClInclude Include="enemy.h" />
     <ClInclude Include="explosion.h" />

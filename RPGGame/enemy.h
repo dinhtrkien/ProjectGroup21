@@ -72,6 +72,12 @@ public:
 	void set_hp(const int& _hp) { hp = _hp; }
 	int get_hp() { return hp; }
 
+	void set_Max_hp(const int& _hp) { Max_hp = _hp; }
+	int get_Max_hp() { return Max_hp; }
+
+	void set_damage(const int& _damage) { damage = _damage; }
+	int get_damage() { return damage; }
+
 private:
 	std::vector<Bullet*> e_bullet_list_;
 	int x_pos_;
@@ -94,6 +100,8 @@ private:
 	bool is_move;
 
 	int hp;
+	int Max_hp;
+	int damage;
 };
 
 #endif // !ENEMY_H
