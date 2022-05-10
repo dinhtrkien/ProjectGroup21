@@ -58,6 +58,8 @@ public:
 
 	void set_damage(const int& _damage) { damage = _damage; }
 	int get_damage() { return damage; }
+
+	float get_speed() { return sqrt(x_speed_*x_speed_ + y_speed_ * y_speed_); }
 private:
 	std::vector<Bullet*> p_bullet_list_;
 	float x_speed_;
@@ -74,9 +76,9 @@ private:
 
 	SDL_Rect frame_clip_[4];
 	//SDL_Rect* frame_clip_ = new SDL_Rect[4];
-
-	Input input_type_;
-	int frame_; // luu chi so frame la 1 hay 2 hay 3
+;
+	int frame_; // lu
+	Input input_type_; //chi so frame la 1 hay 2 hay 3
 	int status_; // trang thai tien hoac lui
 
 	int hp;

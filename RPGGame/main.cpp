@@ -9,6 +9,9 @@
 #include "enemy.h"
 #include "explosion.h"
 #include "Collision.h"
+#include "Camera.h"
+
+
 
 BaseObject g_background;
 bool InitData()
@@ -80,7 +83,9 @@ std::vector<Enemy*> MakeEnemyList(const int& n)
 
 int main(int argc, char* argv[])
 {
-    Timer fps_time;
+	
+	
+	Timer fps_time;
     if (InitData() == false)
         return -1;
 
@@ -129,7 +134,16 @@ int main(int argc, char* argv[])
     int time_shoot_start=0;
 
     bool isquit = false;
-    while (!isquit)
+    
+	
+	//camera
+	Camera camera;
+	camera.init(p_player);
+	//
+	
+	
+	
+	while (!isquit)
     {
         fps_time.start();
         time_shoot.start();
@@ -152,6 +166,12 @@ int main(int argc, char* argv[])
 
         mouse.update();
         
+		//camera
+		camera.update(p_player);
+		camera.draw(g_screen, g_background.GetObjectW(), SDL_FLIP_NONE);
+		//
+
+
         if (num_enemy == 0) {
             g_level++;
             num_enemy = g_level;
@@ -260,6 +280,8 @@ int main(int argc, char* argv[])
             }
 
         mouse.DrawMouse(g_screen);
+
+
 
 
         SDL_RenderDrawRect(g_screen, &rect);
