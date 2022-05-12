@@ -10,6 +10,9 @@
 #include "explosion.h"
 #include "Collision.h"
 #include "TextObject.h"
+#include "items.h"
+#include <time.h>
+#include <stdlib.h>
 
 BaseObject g_background;
 TTF_Font *menu_font = NULL;
@@ -51,7 +54,7 @@ bool InitData()
         }
         else
         {
-            menu_font = TTF_OpenFont("font\ancient_modern_tales.ttf", 20);
+            menu_font = TTF_OpenFont("font/ancient_modern_tales.ttf", 20);
             if (menu_font == NULL)
             {
                 success = false;
@@ -127,6 +130,7 @@ int main(int argc, char* argv[])
         Enemy_List[i]->set_damage(5);
     }
    
+    std::vector<Items*> items_list;
     int e_damage = 5;
     int E_MAX_HP_ = 20;
 
@@ -268,14 +272,47 @@ int main(int argc, char* argv[])
         for (int i=0;i<Enemy_List.size(); i++)
             if (Enemy_List[i]->get_hp() == 0)
             {
+                srand(time(0));
+                int des = rand() % 100;
+                if (des %2== 0)
+                {
+                    Items* item = new Items();
+                    item->SetRect(Enemy_List[i]->GetRect().x, Enemy_List[i]->GetRect().y);
+                    items_list.push_back(item);
+                }
                 if (num_enemy>=1) num_enemy--;
                 Enemy* e_clone = Enemy_List[i];
                     e_clone->Free();
                     e_clone = NULL;
                     Enemy_List.erase(Enemy_List.begin()+i);
                     delete e_clone;
+
+                    
             }
 
+        for (int i = 0; i < items_list.size(); i++)
+        {
+            items_list[i]->show(g_screen);
+            SDL_Rect item_clone = items_list[i]->GetRect();
+            SDL_Rect player_rect;
+            player_rect.x = p_player.GetRect().x;
+            player_rect.y = p_player.GetRect().y;
+            player_rect.w = p_player.get_width_frame();
+            player_rect.h = p_player.get_height_frame();
+            if (Collision::AABB(item_clone, player_rect))
+            {
+                Items* clone = items_list[i];
+                clone->Free();
+                items_list.erase(items_list.begin() + i);
+                if (p_player.get_hp_() + 10 < 100)
+                {
+                    p_player.set_hp_(p_player.get_hp_() + 10);
+                }
+                else p_player.set_hp_(100);
+                clone = NULL;
+                delete clone;
+            }
+        }
         mouse.DrawMouse(g_screen);
 
 

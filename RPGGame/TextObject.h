@@ -16,7 +16,7 @@ public:
 	~TextObject();
 
 	bool LoadFromRenderText(TTF_Font* font, SDL_Renderer* screen);
-	void RenderText(SDL_Renderer* screen, int x_pos, int y_pos, SDL_Rect* clip = NULL);
+	void RenderText(SDL_Renderer* screen, int x_pos, int y_pos, SDL_Rect* clip);
 	void free();
 
 	void SetTextColor(Uint8 red, Uint8 green, Uint8 blue);

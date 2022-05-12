@@ -42,7 +42,7 @@ void TextObject::SetTextColor(Uint8 red, Uint8 green, Uint8 blue)
 	text_color_.b = blue;
 }
 
-void TextObject::RenderText(SDL_Renderer* screen, int x_pos, int y_pos, SDL_Rect* clip = NULL)
+void TextObject::RenderText(SDL_Renderer* screen, int x_pos, int y_pos, SDL_Rect* clip)
 {
 	SDL_Rect renderQuad{ x_pos, y_pos, width_, height_ };
 	if (clip != NULL)
