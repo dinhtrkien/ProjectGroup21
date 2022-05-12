@@ -1,17 +1,12 @@
-﻿  enemy.cpp
+﻿  main.cpp
 C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\commonfunc.h(36,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
 C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\commonfunc.h(49,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
-C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\enemy.cpp(135,20): warning C4018: '<': signed/unsigned mismatch
-  main.cpp
-C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\commonfunc.h(36,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
-C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\commonfunc.h(49,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
-C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(105,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(159,70): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(173,27): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(207,27): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(209,35): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(222,27): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(225,31): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(251,23): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
+C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(90,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(135,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(189,70): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(203,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(252,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(255,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(281,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(301,27): warning C4018: '<': signed/unsigned mismatch
   RPGGame.vcxproj -> C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\Debug\RPGGame.exe

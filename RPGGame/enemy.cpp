@@ -99,25 +99,25 @@ void Enemy::Show(SDL_Renderer* des)
 
 }
 
-void Enemy::Make_Action(const int &dx, const int &dy, SDL_Renderer* screen, std::vector<Enemy*> enemy_list)
+void Enemy::Make_Action(const int& dx, const int& dy, SDL_Renderer* screen, std::vector<Enemy*> enemy_list)
 {
-		set_is_move(true);
-		set_des_x(dx);
-		set_des_y(dy);
-		set_first_x(rect_.x);
-		set_first_y(rect_.y);
-		if (pow(des_x_ - first_x_, 2) + pow(des_y_ - first_y_, 2) <= 90000) {
-				set_is_move(false);
-		}
-		
-			set_x_speed(int(8 * ((get_des_x() - get_first_x()) / sqrt(pow(get_des_x() - get_first_x(), 2) + pow(get_des_y() - get_first_y(), 2)))));
-			set_y_speed(int(8 * ((get_des_y() - get_first_y()) / sqrt(pow(get_des_x() - get_first_x(), 2) + pow(get_des_y() - get_first_y(), 2)))));
+	set_is_move(true);
+	set_des_x(dx);
+	set_des_y(dy);
+	set_first_x(rect_.x);
+	set_first_y(rect_.y);
+	if (pow(des_x_ - first_x_, 2) + pow(des_y_ - first_y_, 2) <= 90000) {
+		set_is_move(false);
+	}
+
+	set_x_speed(int(8 * ((get_des_x() - get_first_x()) / sqrt(pow(get_des_x() - get_first_x(), 2) + pow(get_des_y() - get_first_y(), 2)))));
+	set_y_speed(int(8 * ((get_des_y() - get_first_y()) / sqrt(pow(get_des_x() - get_first_x(), 2) + pow(get_des_y() - get_first_y(), 2)))));
 }
 
 void Enemy::SetupBullet(SDL_Renderer* screen, const int& dx, const int& dy)
 {
 	Bullet* p_bullet = e_bullet_list_[0];
-	p_bullet->SetRect(rect_.x+32, rect_.y+32);
+	p_bullet->SetRect(rect_.x + 32, rect_.y + 32);
 	p_bullet->set_is_move(true); // dan duoc ban
 	p_bullet->set_bullet_range(500);
 	p_bullet->set_des_x(dx);

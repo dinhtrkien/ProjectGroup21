@@ -23,13 +23,13 @@
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{8e651c64-fdc0-4b08-86e5-a8dbdd0c6674}</ProjectGuid>
     <RootNamespace>RPGGame</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\source\repos\ProjectGroup21\RPGGame\TextObject.cpp" />
     <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="bullet.cpp" />
     <ClCompile Include="Collision.cpp" />
@@ -152,6 +153,7 @@
     <ClCompile Include="enemy.cpp" />
     <ClCompile Include="explosion.cpp" />
     <ClCompile Include="game_map.cpp" />
+    <ClCompile Include="items.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="mouse.cpp" />
@@ -160,6 +162,7 @@
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\source\repos\ProjectGroup21\RPGGame\TextObject.h" />
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="bullet.h" />
     <ClInclude Include="Collision.h" />
@@ -167,6 +170,7 @@
     <ClInclude Include="enemy.h" />
     <ClInclude Include="explosion.h" />
     <ClInclude Include="game_map.h" />
+    <ClInclude Include="items.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="mouse.h" />
     <ClInclude Include="Point.h" />

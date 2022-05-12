@@ -45,6 +45,8 @@ public:
 
 	void set_des_y(const int& desy) { des_y_ = desy; } // dat toa do diem den theo y
 	int get_des_y() const { return des_y_; } // lay toa do diem den theo y
+
+	void set_x_pos(const int& _x) { x_pos_ = _x; }
 	bool LoadImage(std::string path, SDL_Renderer* screen);
 	void Show(SDL_Renderer* des);
 	void Make_Action(const int &dx, const int &dy, SDL_Renderer* screen, std::vector<Enemy*> enemy_list);

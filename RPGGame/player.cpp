@@ -185,23 +185,26 @@ void Player::HandleInputAction(SDL_Event events, SDL_Renderer* screen)
 	{
 		if (events.button.button == SDL_BUTTON_LEFT)
 		{
-			Bullet* p_bullet = new Bullet();
-			p_bullet->LoadImage("img/bullet12.png", screen);
-			p_bullet->SetRect(this->rect_.x+32, this->rect_.y+32); // lay vi tri render
-			p_bullet->set_is_move(true); // dan duoc ban
-			Uint32 Button;
-			int dx, dy;
-			SDL_PumpEvents();
-			Button = SDL_GetMouseState(&dx, &dy);
-			p_bullet->set_bullet_range(300);
-			p_bullet->set_des_x(dx);
-			p_bullet->set_des_y(dy);
-			p_bullet->set_first_x(this->rect_.x);
-			p_bullet->set_first_y(this->rect_.y);
-			p_bullet->set_x_speed( int(50 *((p_bullet->get_des_x() - p_bullet->get_first_x()) / sqrt(pow(p_bullet->get_des_x() - p_bullet->get_first_x(), 2) + pow(p_bullet->get_des_y() - p_bullet->get_first_y(), 2)))));
-			p_bullet->set_y_speed(int(50* (p_bullet->get_des_y() - p_bullet->get_first_y()) / sqrt(pow(p_bullet->get_des_x() - p_bullet->get_first_x(), 2) + pow(p_bullet->get_des_y() - p_bullet->get_first_y(), 2))));
-			p_bullet->set_direct_angle(atan2(double(-this->rect_.y + dy), double(-this->rect_.x + dx)) * 180 / M_PI); // set huong ban cho mui ten
-			p_bullet_list_.push_back(p_bullet);
+			if (p_bullet_list_.size() == 0)
+			{
+				Bullet* p_bullet = new Bullet();
+				p_bullet->LoadImage("img/bullet12.png", screen);
+				p_bullet->SetRect(this->rect_.x + 32, this->rect_.y + 32); // lay vi tri render
+				p_bullet->set_is_move(true); // dan duoc ban
+				Uint32 Button;
+				int dx, dy;
+				SDL_PumpEvents();
+				Button = SDL_GetMouseState(&dx, &dy);
+				p_bullet->set_bullet_range(300);
+				p_bullet->set_des_x(dx);
+				p_bullet->set_des_y(dy);
+				p_bullet->set_first_x(this->rect_.x);
+				p_bullet->set_first_y(this->rect_.y);
+				p_bullet->set_x_speed(int(50 * ((p_bullet->get_des_x() - p_bullet->get_first_x()) / sqrt(pow(p_bullet->get_des_x() - p_bullet->get_first_x(), 2) + pow(p_bullet->get_des_y() - p_bullet->get_first_y(), 2)))));
+				p_bullet->set_y_speed(int(50 * (p_bullet->get_des_y() - p_bullet->get_first_y()) / sqrt(pow(p_bullet->get_des_x() - p_bullet->get_first_x(), 2) + pow(p_bullet->get_des_y() - p_bullet->get_first_y(), 2))));
+				p_bullet->set_direct_angle(atan2(double(-this->rect_.y + dy), double(-this->rect_.x + dx)) * 180 / M_PI); // set huong ban cho mui ten
+				p_bullet_list_.push_back(p_bullet);
+			}
 		}
 	}
 }
@@ -220,7 +223,7 @@ void Player::HandleBullet(SDL_Renderer* des)
 			}
 			else
 			{
-				p_bullet_list_.erase(p_bullet_list_.begin(), p_bullet_list_.begin()+i);
+				p_bullet_list_.erase(p_bullet_list_.begin()+i);
 				p_bullet = NULL;
 				if (p_bullet != NULL)
 				{
