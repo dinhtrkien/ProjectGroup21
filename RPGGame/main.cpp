@@ -9,8 +9,11 @@
 #include "enemy.h"
 #include "explosion.h"
 #include "Collision.h"
+#include "TextObject.h"
 
 BaseObject g_background;
+TTF_Font *menu_font = NULL;
+
 bool InitData()
 {
     bool success = true;
@@ -39,10 +42,24 @@ bool InitData()
                 success = false;
             }
         }
+
+        //font init
+
+        if (TTF_Init() == -1)
+        {
+            success = false;
+        }
+        else
+        {
+            menu_font = TTF_OpenFont("font\ancient_modern_tales.ttf", 20);
+            if (menu_font == NULL)
+            {
+                success = false;
+            }
+        }
     }
 
     return success;
-
 }
 
 bool LoadBackGround()
