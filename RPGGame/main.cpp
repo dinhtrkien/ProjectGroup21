@@ -9,14 +9,10 @@
 #include "enemy.h"
 #include "explosion.h"
 #include "Collision.h"
-#include <ctime>
-#include <cstdlib>
-#include "items.h"
 #include "TextObject.h"
 
-
 BaseObject g_background;
-TTF_Font* menu_font = NULL;
+TTF_Font *menu_font = NULL;
 
 bool InitData()
 {
@@ -47,13 +43,15 @@ bool InitData()
             }
         }
 
+        //font init
+
         if (TTF_Init() == -1)
         {
             success = false;
         }
         else
         {
-            menu_font = TTF_OpenFont("font/ancient_modern_tales.ttf", 20);
+            menu_font = TTF_OpenFont("font\ancient_modern_tales.ttf", 20);
             if (menu_font == NULL)
             {
                 success = false;
@@ -62,7 +60,6 @@ bool InitData()
     }
 
     return success;
-
 }
 
 bool LoadBackGround()
@@ -85,16 +82,8 @@ void close()
     SDL_Quit();
 }
 
-int random(int n)
-{
-    srand(time(0));
-    return rand() % 100;
-}
-
 int g_level = 1;
 int num_enemy = 1;
-
-
 std::vector<Enemy*> MakeEnemyList(const int& n)
 {
     std::vector<Enemy*> a;
@@ -105,7 +94,6 @@ std::vector<Enemy*> MakeEnemyList(const int& n)
     }
     return a;
 }
-
 
 int main(int argc, char* argv[])
 {
@@ -129,7 +117,6 @@ int main(int argc, char* argv[])
     p_player.Main_Set_clip();
     p_player.set_damage(10);
 
-    std::vector<Items*> items_list;
 
     std::vector<Enemy*> Enemy_List = MakeEnemyList(num_enemy);
     for (int i = 0; i < Enemy_List.size(); i++)
@@ -234,7 +221,7 @@ int main(int argc, char* argv[])
                 }
         }
        
-       /* for (int i = 0; i < Enemy_List.size() - 1; i++)
+        for (int i = 0; i < Enemy_List.size() -1; i++)
         {
             for (int j = i + 1; j < Enemy_List.size(); j++)
             {
@@ -243,7 +230,7 @@ int main(int argc, char* argv[])
                     Enemy_List[i]->SetRect(Enemy_List[i]->GetRect().x+8 , Enemy_List[i]->GetRect().y+0);
                 }
             }
-        }*/
+        }
         
         
 
@@ -281,43 +268,14 @@ int main(int argc, char* argv[])
         for (int i=0;i<Enemy_List.size(); i++)
             if (Enemy_List[i]->get_hp() == 0)
             {
-                SDL_Rect e_rect;
                 if (num_enemy>=1) num_enemy--;
                 Enemy* e_clone = Enemy_List[i];
-                e_rect = e_clone->GetRect();
                     e_clone->Free();
                     e_clone = NULL;
                     Enemy_List.erase(Enemy_List.begin()+i);
-                    int res = random(10);
-                    if (res %2==0)
-                    {
-                        Items* g_item=new Items();
-                        g_item->SetRect(e_rect.x, e_rect.y);
-                        items_list.push_back(g_item);
-                    }
                     delete e_clone;
-
             }
-        for (int i = 0; i < items_list.size(); i++)
-        {
-            items_list[i]->show(g_screen);
 
-            Items* items_clone = items_list[i];
-            SDL_Rect items_rect = items_list[i]->GetRect();
-            SDL_Rect P_rect;
-            P_rect.x = p_player.GetRect().x;
-            P_rect.y = p_player.GetRect().y;
-            P_rect.w = p_player.get_width_frame();
-            P_rect.h = p_player.get_height_frame();
-
-            if (Collision::AABB(items_rect, P_rect))
-            {
-                items_clone->Free();
-                items_clone = NULL;
-                items_list.erase(items_list.begin() + i);
-               if (p_player.get_hp_()+10<100) p_player.set_hp_(p_player.get_hp_() + 10);
-            }
-        }
         mouse.DrawMouse(g_screen);
 
 
