@@ -21,10 +21,18 @@ public:
 	int get_type() { return type; }
 
 	void show(SDL_Renderer* des);
+
+	void set_t_start() { t_start = SDL_GetTicks(); }
+	int get_real_time() {
+		return SDL_GetTicks();
+	}
+
+	int get_t_start() { return t_start; }
 private:
 	int x_pos_;
 	int y_pos_;
 	int type; // 1: heal; 2,3,4...:
+	int t_start;
 };
 
 #endif 
