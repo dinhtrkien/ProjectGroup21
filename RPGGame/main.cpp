@@ -299,16 +299,20 @@ int main(int argc, char* argv[])
             player_rect.y = p_player.GetRect().y;
             player_rect.w = p_player.get_width_frame();
             player_rect.h = p_player.get_height_frame();
-            if (Collision::AABB(item_clone, player_rect))
+            if (Collision::AABB(item_clone, player_rect)|| items_list[i]->get_real_time() - items_list[i]->get_t_start() >= 5000)
             {
                 Items* clone = items_list[i];
                 clone->Free();
                 items_list.erase(items_list.begin() + i);
-                if (p_player.get_hp_() + 10 < 100)
+                if (Collision::AABB(item_clone, player_rect))
                 {
-                    p_player.set_hp_(p_player.get_hp_() + 10);
+
+                    if (p_player.get_hp_() + 10 < 100)
+                    {
+                        p_player.set_hp_(p_player.get_hp_() + 10);
+                    }
+                    else p_player.set_hp_(100);
                 }
-                else p_player.set_hp_(100);
                 clone = NULL;
                 delete clone;
             }
