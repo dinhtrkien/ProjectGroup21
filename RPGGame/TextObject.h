@@ -24,6 +24,8 @@ public:
 	int GetWidth () const { return width_; }
 	int GetHeight () const { return height_; }
 	string GetText () const { return text_; }
+	
+	void SetText(string _text) { text_ = _text; }
 
 private:
 	string text_;
