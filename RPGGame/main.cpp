@@ -13,9 +13,10 @@
 #include "items.h"
 #include <time.h>
 #include <stdlib.h>
+#include <fstream>
 
 BaseObject g_background;
-TTF_Font *menu_font = NULL;
+TTF_Font *menu_font=NULL;
 
 bool InitData()
 {
@@ -48,7 +49,7 @@ bool InitData()
 
         //font init
 
-        if (TTF_Init() == -1)
+    if (TTF_Init() == -1)
         {
             success = false;
         }
@@ -61,6 +62,7 @@ bool InitData()
             }
         }
     }
+
 
     return success;
 }
@@ -106,6 +108,10 @@ int main(int argc, char* argv[])
 
     if (LoadBackGround() == false)
         return -1;
+
+    TextObject g_text_object;
+    TextObject g_txt;
+    
 
     Timer time_shoot;
     GameMap game_map;
@@ -165,7 +171,7 @@ int main(int argc, char* argv[])
             }
             p_player.HandleInputAction(g_event, g_screen);
         }
-       
+        
         SDL_SetRenderDrawColor(g_screen, 0, 0, 0, 0);
         SDL_RenderClear(g_screen);
         g_background.Render(g_screen, NULL);
@@ -281,27 +287,30 @@ int main(int argc, char* argv[])
             }
             
         }
-        for (int i=0;i<Enemy_List.size(); i++)
+        for (int i = 0; i < Enemy_List.size(); i++)
+        {
             if (Enemy_List[i]->get_hp() == 0)
             {
                 srand(time(0));
                 int des = rand() % 100;
-                if (des %2== 0)
+                if (des % 2 == 0)
                 {
                     Items* item = new Items();
                     item->SetRect(Enemy_List[i]->GetRect().x, Enemy_List[i]->GetRect().y);
                     items_list.push_back(item);
                 }
-                if (num_enemy>=1) num_enemy--;
+                if (num_enemy >= 1) num_enemy--;
                 Enemy* e_clone = Enemy_List[i];
-                    e_clone->Free();
-                    e_clone = NULL;
-                    Enemy_List.erase(Enemy_List.begin()+i);
-                    delete e_clone;
+                e_clone->Free();
+                e_clone = NULL;
+                Enemy_List.erase(Enemy_List.begin() + i);
+                delete e_clone;
 
-                    
+
             }
-
+            
+            
+        }
         for (int i = 0; i < items_list.size(); i++)
         {
             items_list[i]->show(g_screen);
@@ -330,6 +339,28 @@ int main(int argc, char* argv[])
             }
         }
 
+
+        //save file
+        p_player.Export("data/player/player.dat");
+        for (int i = 0; i < Enemy_List.size(); i++)
+        {
+            Enemy_List[i]->Export("data/Enemy/enemy_"+std::to_string(i)+".dat");
+        }
+
+
+
+        mouse.DrawMouse(g_screen);
+
+
+        g_text_object.SetText("asdgkjsg");
+        g_text_object.LoadFromRenderText(menu_font, g_screen);
+        g_text_object.SetTextColor(0, 0, 0);
+        g_text_object.RenderText(g_screen, 100, 100, NULL);
+
+        g_txt.SetText("skldhfjlsdfj");
+        g_txt.LoadFromRenderText(menu_font, g_screen);
+        g_txt.SetTextColor(0, 0, 0);
+        g_txt.RenderText(g_screen, 1000, 100, NULL);
 
 		// check enemy collision
 		for (int i = 0;i < Enemy_List.size(); i++)
@@ -363,7 +394,6 @@ int main(int argc, char* argv[])
         SDL_RenderFillRect(g_screen, &HP);
         
 		SDL_RenderPresent(g_screen);
-
 
         int real_time = fps_time.get_ticks();
         int time_one_frame = 1000 / FRAME_PER_SECOND;

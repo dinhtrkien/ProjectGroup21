@@ -5,6 +5,7 @@
 #include "BaseObject.h"
 #include "bullet.h"
 #include <vector>
+#include <fstream>
 
 #define PLAYER_SPEED 10;
 
@@ -22,6 +23,21 @@ public:
 		WALK_DOWN = 3,
 	};
 
+	void Export(std::string file_path)
+	{
+		std::ofstream p_data(file_path);
+		if (p_data)
+		{
+			p_data << x_speed_ << std::endl;
+			p_data << y_speed_ << std::endl;
+			p_data << x_pos_ << std::endl;
+			p_data << y_pos_ << std::endl;
+			p_data << status_ << std::endl;
+			p_data << hp << std::endl;
+			p_data << damage << std::endl;
+			p_data.close();
+		}
+	}
 	bool LoadImage(std::string path, SDL_Renderer* screen);
 	void Show(SDL_Renderer* des);
 	void HandleInputAction(SDL_Event events, SDL_Renderer* screen);
@@ -54,6 +70,7 @@ public:
 	void set_damage(const int& _damage) { damage = _damage; }
 	int get_damage() { return damage; }
 
+
 	void SetMapXY(const int map_x, const int map_y)
 	{
 		map_x_ = map_x;
@@ -64,6 +81,10 @@ public:
 	void CheckToMap(Map& map_data);
 
 	void Camera(Map& map_data);
+
+	
+	
+
 private:
 	std::vector<Bullet*> p_bullet_list_;
 	float x_speed_;
