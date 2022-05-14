@@ -36,3 +36,8 @@ bool Collision::AABB(const SDL_Rect& recA, const SDL_Rect& recB)
 
     return false;
 }
+
+float Collision::Distance(const SDL_Rect& recA, const SDL_Rect& recB)
+{
+	return sqrt((recA.x - recB.x)*(recA.x - recB.x) + (recA.y - recB.y)*(recA.y - recB.y));
+}

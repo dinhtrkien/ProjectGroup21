@@ -7,6 +7,9 @@ class Collision
 {
 public:
 	static bool AABB(const SDL_Rect& recA, const SDL_Rect& recB);
+
+
+	static float Distance(const SDL_Rect& recA, const SDL_Rect& recB);
 	
 };
 

@@ -26,11 +26,6 @@ public:
 	void Show(SDL_Renderer* des);
 	void HandleInputAction(SDL_Event events, SDL_Renderer* screen);
 	void Main_Set_clip();
-	void SetMapXY(const int map_x, const int map_y)
-	{
-		map_x_ = map_x;
-		map_y_ = map_y;
-	}
 
 	void set_bullet_list(std::vector<Bullet*> bullet_list)
 	{
@@ -58,19 +53,33 @@ public:
 
 	void set_damage(const int& _damage) { damage = _damage; }
 	int get_damage() { return damage; }
+
+	void SetMapXY(const int map_x, const int map_y)
+	{
+		map_x_ = map_x;
+		map_y_ = map_y;
+	}
+
+	void DoPlayer(Map& map_data);
+	void CheckToMap(Map& map_data);
+
+	void Camera(Map& map_data);
 private:
 	std::vector<Bullet*> p_bullet_list_;
 	float x_speed_;
 	float y_speed_;
 
+	float x_val_;
+	float y_val_;
+
 	float x_pos_;
-	float y_pos_;
+	float y_pos_;	
 
 	int width_frame_;
 	int height_frame_;
 
 	int map_x_;
-	int map_y_;
+	int map_y_;	
 
 	SDL_Rect frame_clip_[4];
 	//SDL_Rect* frame_clip_ = new SDL_Rect[4];

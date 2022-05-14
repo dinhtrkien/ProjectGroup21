@@ -150,6 +150,9 @@ int main(int argc, char* argv[])
     int time_shoot_start=0;
 
     bool isquit = false;
+
+
+
     while (!isquit)
     {
         fps_time.start();
@@ -167,11 +170,19 @@ int main(int argc, char* argv[])
         SDL_RenderClear(g_screen);
         g_background.Render(g_screen, NULL);
 
-        
+		//map
+		Map map_data = game_map.GetMap();
 
-        game_map.DrawMap(g_screen);
+		p_player.SetMapXY(map_data.start_x_, map_data.start_y_);
+		p_player.DoPlayer(map_data);	
+		
+		game_map.SetMap(map_data);
+		game_map.DrawMap(g_screen);
+		//
 
-        mouse.update();
+
+
+		mouse.update();
         
         if (num_enemy == 0) {
             g_level++;
@@ -188,6 +199,7 @@ int main(int argc, char* argv[])
             }
         }
        
+			
         p_player.HandleBullet(g_screen);
         p_player.Show(g_screen);
         
@@ -317,14 +329,40 @@ int main(int argc, char* argv[])
                 delete clone;
             }
         }
-        mouse.DrawMouse(g_screen);
 
+
+		// check enemy collision
+		for (int i = 0;i < Enemy_List.size(); i++)
+		{
+			for (int j = i;j < Enemy_List.size(); j++)
+			{
+				if (Collision::AABB(Enemy_List[i]->GetRect(), Enemy_List[j]->GetRect()))
+				{
+					if (Collision::Distance(Enemy_List[i]->GetRect(), p_player.GetRect()) > Collision::Distance(Enemy_List[j]->GetRect(), p_player.GetRect()))
+					{
+						Enemy_List[i]->set_x_speed(0);
+						Enemy_List[i]->set_y_speed(0);
+					}
+					else
+					{
+						Enemy_List[j]->set_x_speed(0);
+						Enemy_List[j]->set_y_speed(0);
+					}
+				}
+			}
+
+		}
+		//
+
+
+        mouse.DrawMouse(g_screen);
 
         SDL_RenderDrawRect(g_screen, &rect);
         SDL_SetRenderDrawColor(g_screen, 255, 0, 0, 0);
         HP.w = p_player.get_hp_() * 2;
         SDL_RenderFillRect(g_screen, &HP);
-        SDL_RenderPresent(g_screen);
+        
+		SDL_RenderPresent(g_screen);
 
 
         int real_time = fps_time.get_ticks();
