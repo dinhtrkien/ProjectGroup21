@@ -5,6 +5,7 @@ Items::Items()
 	x_pos_ = 0;
 	y_pos_ = 0;
 	type = 0;
+	t_start = SDL_GetTicks();
 }
 
 Items::~Items()

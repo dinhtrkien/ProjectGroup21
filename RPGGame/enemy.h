@@ -79,6 +79,23 @@ public:
 	void set_damage(const int& _damage) { damage = _damage; }
 	int get_damage() { return damage; }
 
+	void Export(std::string file_path)
+	{
+		std::ofstream p_data(file_path);
+		if (p_data)
+		{
+			p_data << x_speed_ << std::endl;
+			p_data << y_speed_ << std::endl;
+			p_data << x_pos_ << std::endl;
+			p_data << y_pos_ << std::endl;
+			p_data << status_ << std::endl;
+			p_data << hp << std::endl;
+			p_data << Max_hp << std::endl;
+			p_data << damage << std::endl;
+			p_data.close();
+		}
+	}
+
 private:
 	std::vector<Bullet*> e_bullet_list_;
 	int x_pos_;
