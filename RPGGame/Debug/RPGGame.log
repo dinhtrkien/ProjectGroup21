@@ -1,17 +1,19 @@
 ﻿  main.cpp
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\commonfunc.h(36): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\commonfunc.h(49): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\main.cpp(131): warning C4018: '<': signed/unsigned mismatch
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\main.cpp(197): warning C4018: '<': signed/unsigned mismatch
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\main.cpp(212): warning C4018: '<': signed/unsigned mismatch
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\main.cpp(246): warning C4018: '<': signed/unsigned mismatch
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\main.cpp(248): warning C4018: '<': signed/unsigned mismatch
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\main.cpp(261): warning C4018: '<': signed/unsigned mismatch
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\main.cpp(264): warning C4018: '<': signed/unsigned mismatch
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\main.cpp(290): warning C4018: '<': signed/unsigned mismatch
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\main.cpp(294): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\main.cpp(314): warning C4018: '<': signed/unsigned mismatch
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\main.cpp(345): warning C4018: '<': signed/unsigned mismatch
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\main.cpp(366): warning C4018: '<': signed/unsigned mismatch
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\main.cpp(368): warning C4018: '<': signed/unsigned mismatch
-  RPGGame.vcxproj -> D:\Tài liệu của THÀNH\UET\Năm 1-2\Lập trình nâng cao\quan\ProjectGroup21\RPGGame\Debug\RPGGame.exe
+C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\commonfunc.h(36,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\commonfunc.h(49,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\player.h(73,43): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
+C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\player.h(74,43): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
+C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(243,35): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(253,35): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(295,35): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(330,74): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(344,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(378,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(380,39): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(393,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(396,35): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(422,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(426,31): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(446,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\main.cpp(476,31): warning C4018: '<': signed/unsigned mismatch
+  RPGGame.vcxproj -> C:\Users\Admin\Documents\GitHub\ProjectGroup21\RPGGame\Debug\RPGGame.exe
