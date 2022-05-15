@@ -79,8 +79,7 @@ public:
 		map_y_ = map_y;
 	}
 
-	void DoPlayer(Map& map_data);
-	void CheckToMap(Map& map_data);
+	void CheckMapCollision(Map& map_data);
 
 	void Camera(Map& map_data);
 

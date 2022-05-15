@@ -10,9 +10,7 @@ class TileMat : public BaseObject
 {
 public:
 	TileMat() {}
-	~TileMat() {
-
-	}
+	~TileMat() {}
 };
 
 class GameMap
@@ -25,10 +23,7 @@ public:
 	void LoadTiles(SDL_Renderer* screen);
 	void DrawMap(SDL_Renderer* screen);
 	Map GetMap() const { return game_map_; }
-	void SetMap(Map& map_data)
-	{
-		game_map_ = map_data;
-	}
+	void SetMap(Map& map_data) { game_map_ = map_data; }
 	
 private:
 	Map game_map_;
