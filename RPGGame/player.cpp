@@ -236,8 +236,10 @@ void Player::HandleBullet(SDL_Renderer* des)
 	}
 }
 
-void Player::DoPlayer(Map& map_data)
+
+void Player::CheckMapCollision(Map& map_data)
 {
+
 	x_val_ = 0;
 	y_val_ = 0;
 
@@ -249,51 +251,37 @@ void Player::DoPlayer(Map& map_data)
 		y_val_ += y_speed_;
 	if (input_type_.left_ == 1)
 		y_val_ -= y_speed_;
-	
-	CheckToMap(map_data);
-	//Camera(map_data);
-}
 
-void Player::CheckToMap(Map& map_data)
-{
+
 	int x1 = 0;
 	int x2 = 0;
 
 	int y1 = 0;
 	int y2 = 0;
 
-	//Ckeck horizontal
+	//Ckeck theo chieu ngang
 
 	int height_min = height_frame_ < TILE_SIZE ? height_frame_ : TILE_SIZE;
 
 	x1 = (int)(x_pos_ + x_val_) / TILE_SIZE;
-	x2 = (int)(x_pos_ + x_val_ + width_frame_ - 1) / TILE_SIZE;
+	x2 = (int)(x_pos_ + x_val_ + width_frame_) / TILE_SIZE;
 
 	y1 = (int)y_pos_ / TILE_SIZE;
-	y2 = (int)(y_pos_ + height_min - 1) / TILE_SIZE;
+	y2 = (int)(y_pos_ + height_min) / TILE_SIZE;
 
-	if (x1 >= 0 && x2 < MAX_MAP_X && y1 >= 0 && y2 < MAX_MAP_Y)
+	if (x1 >= 0 && x2 <= MAX_MAP_X && y1 >= 0 && y2 <= MAX_MAP_Y)
 	{
-		if (x_val_ > 0)
-		{
-			if (map_data.tile[y1][x2] == BLANK_TILE || map_data.tile[y2][x2] == BLANK_TILE)
-			{
-				x_pos_ = (float)x2 * TILE_SIZE;
-				x_pos_ -= width_frame_ + 1;
-				x_val_ = 0;
-			}
-		}
-		else if (x_val_ < 0)
+		if (x_val_ < 0)
 		{
 			if (map_data.tile[y1][x1] == BLANK_TILE || map_data.tile[y2][x1] == BLANK_TILE)
 			{
-				x_pos_ = (float)(x1 + 1) * TILE_SIZE; 
+				x_pos_ = (float)(x1) * TILE_SIZE; 
 				x_val_ = 0;
 			}
 		}
 	}
 
-	// Check vertical
+	//Check theo chieu doc
 
 	int width_min = width_frame_ < TILE_SIZE ? width_frame_ : TILE_SIZE;
 
@@ -301,24 +289,24 @@ void Player::CheckToMap(Map& map_data)
 	x2 = (int)(x_pos_ + width_min) / TILE_SIZE;
 
 	y1 = (int)(y_pos_ + y_val_)/ TILE_SIZE;
-	y2 = (int)(y_pos_ + y_val_ + height_frame_ - 1) / TILE_SIZE;
+	y2 = (int)(y_pos_ + y_val_ + height_frame_) / TILE_SIZE;
 
-	if (x1 >= 0 && x2 < MAX_MAP_X && y1 >= 0 && y2 < MAX_MAP_Y)
+	if (x1 >= 0 && x2 <= MAX_MAP_X && y1 >= 0 && y2 <= MAX_MAP_Y)
 	{
 		if (y_val_ > 0)
 		{
-			if (map_data.tile[y2][x1] != BLANK_TILE || map_data.tile[y2][x2] != BLANK_TILE)
+			if (map_data.tile[y2][x1] == BLANK_TILE || map_data.tile[y2][x2] == BLANK_TILE)
 			{
 				y_pos_ = (float)y2 * TILE_SIZE;	
-				y_pos_ -= height_frame_ + 1;
+				y_pos_ -= height_frame_;
 				y_val_ = 0;
 			}
 		}
 		else if (y_val_ < 0)
 		{
-			if (map_data.tile[y1][x1] != BLANK_TILE || map_data.tile[y1][x2] != BLANK_TILE)
+			if (map_data.tile[y1][x1] == BLANK_TILE || map_data.tile[y1][x2] == BLANK_TILE)
 			{
-				y_pos_ = (float)(y1 + 1) * TILE_SIZE;
+				y_pos_ = (float)(y1) * TILE_SIZE;
 				y_val_ = 0;
 			}
 		}
@@ -330,11 +318,11 @@ void Player::CheckToMap(Map& map_data)
 	if (x_pos_ < 0)
 		x_pos_ = 0;
 	if (x_pos_ + width_frame_ > map_data.max_x_)
-		x_pos_ = (float)(map_data.max_x_ - width_frame_ - 1);
+		x_pos_ = (float)(map_data.max_x_ - width_frame_);
 	if (y_pos_ < 0)
 		y_pos_ = 0;
 	if (y_pos_ + height_frame_ > map_data.max_y_)
-		y_pos_ = (float)(map_data.max_y_ - height_frame_ - 1);
+		y_pos_ = (float)(map_data.max_y_ - height_frame_);
 }
 	
 

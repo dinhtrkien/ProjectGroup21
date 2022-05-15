@@ -1,4 +1,26 @@
-﻿  main.cpp
+﻿  BaseObject.cpp
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\commonfunc.h(36): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\commonfunc.h(49): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  bullet.cpp
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\commonfunc.h(36): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\commonfunc.h(49): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  commonfunc.cpp
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\commonfunc.h(36): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\commonfunc.h(49): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  enemy.cpp
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\commonfunc.h(36): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\commonfunc.h(49): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\enemy.cpp(135): warning C4018: '<': signed/unsigned mismatch
+  explosion.cpp
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\commonfunc.h(36): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\commonfunc.h(49): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  game_map.cpp
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\commonfunc.h(36): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\commonfunc.h(49): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  items.cpp
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\commonfunc.h(36): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\commonfunc.h(49): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  main.cpp
 d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\commonfunc.h(36): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
 d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\commonfunc.h(49): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
 d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\main.cpp(131): warning C4018: '<': signed/unsigned mismatch
@@ -14,4 +36,18 @@ d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgrou
 d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\main.cpp(345): warning C4018: '<': signed/unsigned mismatch
 d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\main.cpp(366): warning C4018: '<': signed/unsigned mismatch
 d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\main.cpp(368): warning C4018: '<': signed/unsigned mismatch
+  player.cpp
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\commonfunc.h(36): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\commonfunc.h(49): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\player.cpp(215): warning C4018: '<': signed/unsigned mismatch
+  mouse.cpp
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\commonfunc.h(36): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\commonfunc.h(49): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  TextObject.cpp
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\commonfunc.h(36): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\commonfunc.h(49): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  timer.cpp
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\commonfunc.h(36): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\rpggame\commonfunc.h(49): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  Generating Code...
   RPGGame.vcxproj -> D:\Tài liệu của THÀNH\UET\Năm 1-2\Lập trình nâng cao\quan\ProjectGroup21\RPGGame\Debug\RPGGame.exe

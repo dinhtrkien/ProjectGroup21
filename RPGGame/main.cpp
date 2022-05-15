@@ -48,7 +48,7 @@ bool InitData()
         }
 
         //font init
-
+	
     if (TTF_Init() == -1)
         {
             success = false;
@@ -180,7 +180,7 @@ int main(int argc, char* argv[])
 		Map map_data = game_map.GetMap();
 
 		p_player.SetMapXY(map_data.start_x_, map_data.start_y_);
-		p_player.DoPlayer(map_data);	
+		p_player.CheckMapCollision(map_data);
 		
 		game_map.SetMap(map_data);
 		game_map.DrawMap(g_screen);
@@ -215,9 +215,9 @@ int main(int argc, char* argv[])
 
                 Enemy_List[i]->Show(g_screen);
 
-                if (Enemy_List[i]->get_bullet_list()[0]->get_is_move() == false) 
+                if (Enemy_List[i]->get_bullet_list()[0]->get_is_move() == false)
                 {                                  
-                       Enemy_List[i]->SetupBullet(g_screen, p_player.GetRect().x, p_player.GetRect().y);                          
+                       Enemy_List[i]->SetupBullet(g_screen, p_player.GetRect().x, p_player.GetRect().y);                      
                 }
 
                 Enemy_List[i]->HandleBullet(g_screen);
