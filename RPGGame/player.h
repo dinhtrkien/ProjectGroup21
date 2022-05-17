@@ -7,7 +7,7 @@
 #include <vector>
 #include <fstream>
 
-#define PLAYER_SPEED 10;
+#define PLAYER_SPEED 4;
 
 class Player : public BaseObject
 {

@@ -14,17 +14,18 @@ static SDL_Event g_event;
 
 // Screen
 const int FRAME_PER_SECOND = 25; //FPS
-const int SCREEN_WIDTH = 1200;
-const int SCREEN_HEIGHT = 630;
+const int SCREEN_WIDTH = 1280;
+const int SCREEN_HEIGHT = 640;
 const int SCREEN_BPP = 32;
 
 const int COLOR_KEY_R = 167;
 const int COLOR_KEY_G = 175;
 const int COLOR_KEY_B = 180;
 
-#define BLANK_TILE 6
+#define GRASS_TILE 6
+#define MAGMA_TILE 5
 #define TILE_SIZE  64
-#define MAX_MAP_X  400
+#define MAX_MAP_X  20
 #define MAX_MAP_Y  10
 
 typedef struct Input

@@ -533,7 +533,19 @@ int main(int argc, char* argv[])
         SDL_SetRenderDrawColor(g_screen, 255, 0, 0, 0);
         HP.w = p_player.get_hp_() * 2;
         SDL_RenderFillRect(g_screen, &HP);
+
+		//test hitbox
+		SDL_Rect player_rect;
+		player_rect.x = p_player.GetRect().x;
+		player_rect.y = p_player.GetRect().y;
+		player_rect.w = p_player.get_width_frame();
+		player_rect.h = p_player.get_height_frame();
+
+		SDL_RenderDrawRect(g_screen, &player_rect);
+		//
+
         SDL_RenderPresent(g_screen);
+
 
         int real_time = fps_time.get_ticks();
         int time_one_frame = 1000 / FRAME_PER_SECOND;
