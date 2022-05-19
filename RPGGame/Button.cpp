@@ -10,15 +10,12 @@ void Button::Render(SDL_Renderer* des, TTF_Font* p_font)
 
 bool Button::OnClick(SDL_Event events, Mouse clone)
 {
-	if (Collision::AABB(clone.GetRect(), rect_))
+	if (Collision::AABB(clone.GetRect(), rect_)&& (events.type == SDL_MOUSEBUTTONDOWN))
 	{
-		if (events.type == SDL_MOUSEBUTTONUP)
-		{
 			if (events.button.button == SDL_BUTTON_LEFT)
 			{
 				return true;
 			}
-		}
 	}
 	return false;
 }

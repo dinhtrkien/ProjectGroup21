@@ -155,7 +155,7 @@ int main(int argc, char* argv[])
 
     SDL_Rect HP = { 2,2,200,26 };
 
-    Board Main_Menu;
+    Board *Main_Menu=new Board;
     bool ingame = false; // chua ingame tuc la render menu
 
     while (!isquit)
@@ -177,39 +177,33 @@ int main(int argc, char* argv[])
         SDL_RenderClear(g_screen);
         g_background.Render(g_screen, NULL);
 
-        if (ingame)
-        {
-            game_map.DrawMap(g_screen);
-            Main_Menu.Free();
-            Map map_data = game_map.GetMap();
-
-            p_player.SetMapXY(map_data.start_x_, map_data.start_y_);
-            p_player.CheckMapCollision(map_data);
-
-            game_map.SetMap(map_data);
-            game_map.DrawMap(g_screen);
-        }
-
         if ((!ingame))
         {
-            Main_Menu.Render(g_screen, menu_font);
-            if (Main_Menu.new_game.OnClick(g_event, mouse))
+            Main_Menu->Render(g_screen, menu_font);
+            if (Main_Menu->new_game.OnClick(g_event, mouse))
             {
-                is_new_game = Main_Menu.new_game.OnClick(g_event, mouse);
+                is_new_game = true;
                 ingame = true;
                 is_continued_game = false;
                 is_paused = false;
                 is_game_over = false;
             }
-            if (Main_Menu.continued_game.OnClick(g_event, mouse))
+            if (Main_Menu->continued_game.OnClick(g_event, mouse))
             {
-                ingame = Main_Menu.continued_game.OnClick(g_event, mouse);
-                is_continued_game = true;
-                is_new_game = false;
-                is_paused = false;
-                is_game_over = false;
+                std::ifstream file("data/game/state.dat");
+                int check;
+                file >> check;
+                if (check==1)
+                {
+                    ingame = true;
+                    is_continued_game = true;
+                    is_new_game = false;
+                    is_paused = false;
+                    is_game_over = false;
+                    file.close();
+                }
             }
-            if (Main_Menu.exit.OnClick(g_event, mouse))
+            if (Main_Menu->exit.OnClick(g_event, mouse))
             {
                 isquit = true;
                 is_new_game = false;
@@ -227,15 +221,32 @@ int main(int argc, char* argv[])
             if (game_over.back_to_main.OnClick(g_event, mouse))
             {
                 ingame = false;
+                is_continued_game = false;
                 is_game_over = false;
                 game_over.Free();
-                SDL_Delay(100);
+                std::ofstream file("data/game/state.dat");
+                if (file)
+                {
+                    file << 0;
+                }
+                file.close();
+                //SDL_Delay(100);
             }
         }
 
 
         if ((!is_paused) && (ingame))
         {
+            game_map.DrawMap(g_screen);
+            // Main_Menu->Free();
+
+            Map map_data = game_map.GetMap();
+
+            p_player.SetMapXY(map_data.start_x_, map_data.start_y_);
+            p_player.CheckMapCollision(map_data);
+
+            game_map.SetMap(map_data);
+            game_map.DrawMap(g_screen);
             if (is_new_game)
             {
                 g_level = 1;
@@ -382,7 +393,7 @@ int main(int argc, char* argv[])
                 }
             }
 
-            for (int i = 0; i < Enemy_List.size() - 1; i++)
+            /*for (int i = 0; i < Enemy_List.size() - 1; i++)
             {
                 for (int j = i + 1; j < Enemy_List.size(); j++)
                 {
@@ -391,15 +402,26 @@ int main(int argc, char* argv[])
                         Enemy_List[i]->SetRect(Enemy_List[i]->GetRect().x + 8, Enemy_List[i]->GetRect().y + 0);
                     }
                 }
-            }
+            }*/
 
             for (int i = 0; i < Enemy_List.size(); i++)
             {
                 for (int j = i; j < Enemy_List.size(); j++)
                 {
-                    if (Collision::AABB(Enemy_List[i]->GetRect(), Enemy_List[j]->GetRect()))
+                    SDL_Rect rect1 = Enemy_List[i]->GetRect();
+                    rect1.w = Enemy_List[i]->get_width_frame();
+                    rect1.h = Enemy_List[i]->get_height_frame();
+
+                    SDL_Rect rect2 = Enemy_List[j]->GetRect();
+                    rect2.w = Enemy_List[j]->get_width_frame();
+                    rect2.h = Enemy_List[j]->get_height_frame();
+
+                    
+                    if (Collision::AABB(rect1, rect2))
                     {
-                        if (Collision::Distance(Enemy_List[i]->GetRect(), p_player.GetRect()) > Collision::Distance(Enemy_List[j]->GetRect(), p_player.GetRect()))
+                        Enemy_List[i]->SetRect(rect1.x - Enemy_List[i]->get_x_speed(), rect1.y - Enemy_List[i]->get_y_speed());
+                        Enemy_List[j]->SetRect(rect2.x - Enemy_List[j]->get_x_speed(), rect2.y - Enemy_List[j]->get_y_speed());
+                        if (Collision::Distance(rect1, p_player.GetRect()) > Collision::Distance(rect2, p_player.GetRect()))
                         {
                             Enemy_List[i]->set_x_speed(0);
                             Enemy_List[i]->set_y_speed(0);
@@ -495,7 +517,18 @@ int main(int argc, char* argv[])
                     clone = NULL;
                     delete clone;
                 }
+               
             }
+
+            g_text_object.SetText("LEVEL: " + std::to_string(g_level));
+            g_text_object.LoadFromRenderText(menu_font, g_screen);
+            g_text_object.SetTextColor(0, 0, 0);
+            g_text_object.RenderText(g_screen, 300, 10, NULL);
+
+            SDL_RenderDrawRect(g_screen, &rect);
+            SDL_SetRenderDrawColor(g_screen, 255, 0, 0, 0);
+            HP.w = p_player.get_hp_() * 2;
+            SDL_RenderFillRect(g_screen, &HP);
 
             //save file
             p_player.Export("data/player/player.dat");
@@ -510,29 +543,27 @@ int main(int argc, char* argv[])
                 file << Enemy_List.size() << std::endl;
                 file.close();
             }
-
+           
             if ((p_player.get_hp_() <= 0) && ingame)
             {
                 is_paused = true;
                 is_game_over = true;
                 game_over.set_type(1);
             }
+            std::ofstream file1("data/game/state.dat");
+            if (file)
+            {
+                if (!is_game_over) file1 << "1"; else file1 << "0";
+            }
+            file1.close();
         }
-
+        
 
 
 
         mouse.DrawMouse(g_screen);
 
-        g_text_object.SetText("LEVEL: " + std::to_string(g_level));
-        g_text_object.LoadFromRenderText(menu_font, g_screen);
-        g_text_object.SetTextColor(0, 0, 0);
-        g_text_object.RenderText(g_screen, 300, 10, NULL);
-
-        SDL_RenderDrawRect(g_screen, &rect);
-        SDL_SetRenderDrawColor(g_screen, 255, 0, 0, 0);
-        HP.w = p_player.get_hp_() * 2;
-        SDL_RenderFillRect(g_screen, &HP);
+       
         SDL_RenderPresent(g_screen);
 
         int real_time = fps_time.get_ticks();
