@@ -557,9 +557,15 @@ int main(int argc, char* argv[])
             }
             file1.close();
         }
-        
+        g_text_object.SetText("LEVEL: " + std::to_string(g_level));
+        g_text_object.LoadFromRenderText(menu_font, g_screen);
+        g_text_object.SetTextColor(0, 0, 0);
+        g_text_object.RenderText(g_screen, 300, 10, NULL);
 
-
+        SDL_RenderDrawRect(g_screen, &rect);
+        SDL_SetRenderDrawColor(g_screen, 255, 0, 0, 0);
+        HP.w = p_player.get_hp_() * 2;
+        SDL_RenderFillRect(g_screen, &HP);
 
         mouse.DrawMouse(g_screen);
 
