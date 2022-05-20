@@ -16,7 +16,7 @@
 #include <fstream>
 #include "Button.h"
 #include "MainMenu.h"
-#include "Game_Over_Menu.h"
+#include "menu.h"
 
 BaseObject g_background;
 TTF_Font* menu_font = NULL;
@@ -113,17 +113,18 @@ int main(int argc, char* argv[])
     if (LoadBackGround() == false)
         return -1;
 
-    bool isquit = false;
+    bool is_quit = false;
     bool is_paused = false;
     bool is_new_game = false;
     bool is_continued_game = true;
     bool is_game_over = false;
 
+    GameBoard main_menu;
     GameBoard game_over;
+    GameBoard game_paused;
 
-    TextObject g_text_object;
-    TextObject g_txt;
-
+    TextObject text_level;
+    TextObject txt;
 
     Timer time_shoot;
     GameMap game_map;
@@ -135,7 +136,7 @@ int main(int argc, char* argv[])
 
     Player p_player;
 
-    int g_level = 1;
+    int level = 1;
     int num_enemy = 1;
 
     std::vector<Enemy*> Enemy_List;
@@ -155,10 +156,10 @@ int main(int argc, char* argv[])
 
     SDL_Rect HP = { 2,2,200,26 };
 
-    Board *Main_Menu=new Board;
-    bool ingame = false; // chua ingame tuc la render menu
 
-    while (!isquit)
+    bool ingame = false;
+
+    while (!is_quit)
     {
         fps_time.start();
         time_shoot.start();
@@ -166,7 +167,7 @@ int main(int argc, char* argv[])
         {
             if (g_event.type == SDL_QUIT)
             {
-                isquit = true;
+                is_quit = true;
             }
             p_player.HandleInputAction(g_event, g_screen);
         }
@@ -177,10 +178,42 @@ int main(int argc, char* argv[])
         SDL_RenderClear(g_screen);
         g_background.Render(g_screen, NULL);
 
+        //Main menu
         if ((!ingame))
         {
-            Main_Menu->Render(g_screen, menu_font);
-            if (Main_Menu->new_game.OnClick(g_event, mouse))
+            main_menu.RenderMainMenu(g_screen, menu_font);
+
+            //mouse over button handling
+
+            if (main_menu.mainmenu_play.MouseOver(g_event, mouse))
+            {
+                main_menu.mainmenu_play.SetButtonColor(255, 0, 0);
+            }
+            else
+            {
+                main_menu.mainmenu_play.SetButtonColor(0, 0, 0);
+            }
+
+            if (main_menu.mainmenu_continue.MouseOver(g_event, mouse))
+            {
+                main_menu.mainmenu_continue.SetButtonColor(255, 0, 0);
+            }
+            else
+            {
+                main_menu.mainmenu_continue.SetButtonColor(0, 0, 0);
+            }
+
+            if (main_menu.mainmenu_exit.MouseOver(g_event, mouse))
+            {
+                main_menu.mainmenu_exit.SetButtonColor(255, 0, 0);
+            }
+            else
+            {
+                main_menu.mainmenu_exit.SetButtonColor(0, 0, 0);
+            }
+
+            //Button clicked handling
+            if (main_menu.mainmenu_play.OnClick(g_event, mouse))
             {
                 is_new_game = true;
                 ingame = true;
@@ -188,12 +221,13 @@ int main(int argc, char* argv[])
                 is_paused = false;
                 is_game_over = false;
             }
-            if (Main_Menu->continued_game.OnClick(g_event, mouse))
+
+            if (main_menu.mainmenu_continue.OnClick(g_event, mouse))
             {
                 std::ifstream file("data/game/state.dat");
                 int check;
                 file >> check;
-                if (check==1)
+                if (check == 1)
                 {
                     ingame = true;
                     is_continued_game = true;
@@ -203,42 +237,131 @@ int main(int argc, char* argv[])
                     file.close();
                 }
             }
-            if (Main_Menu->exit.OnClick(g_event, mouse))
+
+            if (main_menu.mainmenu_exit.OnClick(g_event, mouse))
             {
-                isquit = true;
-                is_new_game = false;
-                ingame = false;
-                is_paused = false;
-                is_continued_game = false;
-                is_game_over = false;
+                is_quit = true;
             }
         }
 
+        // Game Over Menu
         if (is_game_over)
         {
-            game_over.Render(g_screen, menu_font);
-            if (game_over.exit.OnClick(g_event, mouse)) isquit = true;
-            if (game_over.back_to_main.OnClick(g_event, mouse))
+            game_over.RenderGameOver(g_screen, menu_font);
+
+            //Mouse over handling
+            if (game_over.gameover_exit.MouseOver(g_event, mouse))
             {
+                game_over.gameover_exit.SetButtonColor(255, 0, 0);
+            }
+            else
+            {
+                game_over.gameover_exit.SetButtonColor(0, 0, 0);
+            }
+
+            if (game_over.gameover_backtomain.MouseOver(g_event, mouse))
+            {
+                game_over.gameover_backtomain.SetButtonColor(255, 0, 0);
+            }
+            else
+            {
+                game_over.gameover_backtomain.SetButtonColor(0, 0, 0);
+            }
+
+            //Button clicked handling
+            if (game_over.gameover_exit.OnClick(g_event, mouse))
+            {
+                is_quit = true;
+            }
+
+            if (game_over.gameover_backtomain.OnClick(g_event, mouse))
+            {
+                is_paused = false;
                 ingame = false;
                 is_continued_game = false;
                 is_game_over = false;
-                game_over.Free();
+                game_over.GameOverFree();
                 std::ofstream file("data/game/state.dat");
                 if (file)
                 {
                     file << 0;
                 }
                 file.close();
-                //SDL_Delay(100);
+            }
+        }
+
+        //Game Paused menu
+        if (!is_game_over && is_paused)
+        {
+            game_paused.RenderGamePaused(g_screen, menu_font);
+
+            //Mouse over handling
+
+            if (game_paused.gamepaused_exit.MouseOver(g_event, mouse))
+            {
+                game_paused.gamepaused_exit.SetButtonColor(255, 0, 0);
+            } 
+            else
+            {
+                game_paused.gamepaused_exit.SetButtonColor(0, 0, 0);
+            }
+
+            if (game_paused.gamepaused_resume.MouseOver(g_event, mouse))
+            {
+                game_paused.gamepaused_resume.SetButtonColor(255, 0, 0);
+            }
+            else
+            {
+                game_paused.gamepaused_resume.SetButtonColor(0, 0, 0);
+            }
+
+            if (game_paused.gamepaused_backtomain.MouseOver(g_event, mouse))
+            {
+                game_paused.gamepaused_backtomain.SetButtonColor(255, 0, 0);
+            }
+            else
+            {
+                game_paused.gamepaused_backtomain.SetButtonColor(0, 0, 0);
+            }
+
+            //Button clicked handling
+
+            if (game_paused.gamepaused_exit.OnClick(g_event, mouse))
+            {
+                is_quit = true;
+            }
+
+            if (game_paused.gamepaused_resume.OnClick(g_event, mouse))
+            {
+                ingame = true;
+                is_paused = false;
+                game_paused.GamePausedFree();
+            }
+
+            if (game_paused.gamepaused_backtomain.OnClick(g_event, mouse))
+            {
+                is_paused = false;
+                ingame = false;
+                is_continued_game = false;
+                is_game_over = false;
+                game_paused.GamePausedFree();
             }
         }
 
 
+        //Gameplay
         if ((!is_paused) && (ingame))
         {
+            // press esc to pause game
+            if (g_event.type == SDL_KEYDOWN)
+            {
+                if (g_event.key.keysym.sym == SDLK_ESCAPE)
+                {
+                    is_paused = true;
+                }
+            }
+
             game_map.DrawMap(g_screen);
-            // Main_Menu->Free();
 
             Map map_data = game_map.GetMap();
 
@@ -249,7 +372,7 @@ int main(int argc, char* argv[])
             game_map.DrawMap(g_screen);
             if (is_new_game)
             {
-                g_level = 1;
+                level = 1;
                 e_damage = 5;
                 E_MAX_HP_ = 20;
                 p_player.Free();
@@ -305,7 +428,7 @@ int main(int argc, char* argv[])
                 infile.open("data/game/game.dat");
                 if (infile)
                 {
-                    infile >> g_level;
+                    infile >> level;
                     infile >> num_enemy;
                     infile.close();
                 }
@@ -342,8 +465,8 @@ int main(int argc, char* argv[])
                 is_continued_game = false;
             }
             if (num_enemy == 0) {
-                g_level++;
-                num_enemy = g_level;
+                level++;
+                num_enemy = level;
                 e_damage += 2;
                 Enemy_List = MakeEnemyList(num_enemy); for (int i = 0; i < Enemy_List.size(); i++)
                 {
@@ -351,7 +474,7 @@ int main(int argc, char* argv[])
                     Enemy_List[i]->Make_Animation();
                     Enemy_List[i]->LoadBullet(g_screen);
                     Enemy_List[i]->set_damage(e_damage);
-                    E_MAX_HP_ += g_level * 5;
+                    E_MAX_HP_ += level * 5;
                     Enemy_List[i]->set_Max_hp(E_MAX_HP_);
                 }
             }
@@ -467,6 +590,7 @@ int main(int argc, char* argv[])
                 }
 
             }
+
             for (int i = 0; i < Enemy_List.size(); i++)
             {
                 if (Enemy_List[i]->get_hp() == 0)
@@ -485,12 +609,9 @@ int main(int argc, char* argv[])
                     e_clone = NULL;
                     Enemy_List.erase(Enemy_List.begin() + i);
                     delete e_clone;
-
-
                 }
-
-
             }
+
             for (int i = 0; i < items_list.size(); i++)
             {
                 items_list[i]->show(g_screen);
@@ -514,16 +635,15 @@ int main(int argc, char* argv[])
                         }
                         else p_player.set_hp_(100);
                     }
-                    clone = NULL;
                     delete clone;
+                    clone = NULL;
                 }
-               
             }
 
-            g_text_object.SetText("LEVEL: " + std::to_string(g_level));
-            g_text_object.LoadFromRenderText(menu_font, g_screen);
-            g_text_object.SetTextColor(0, 0, 0);
-            g_text_object.RenderText(g_screen, 300, 10, NULL);
+            text_level.SetText("LEVEL: " + std::to_string(level));
+            text_level.LoadFromRenderText(menu_font, g_screen);
+            text_level.SetTextColor(255, 0, 0);
+            text_level.RenderText(g_screen, 600, 10, NULL);
 
             SDL_RenderDrawRect(g_screen, &rect);
             SDL_SetRenderDrawColor(g_screen, 255, 0, 0, 0);
@@ -539,7 +659,7 @@ int main(int argc, char* argv[])
             std::ofstream file("data/game/game.dat");
             if (file)
             {
-                file << g_level << std::endl;
+                file << level << std::endl;
                 file << Enemy_List.size() << std::endl;
                 file.close();
             }
@@ -548,7 +668,6 @@ int main(int argc, char* argv[])
             {
                 is_paused = true;
                 is_game_over = true;
-                game_over.set_type(1);
             }
             std::ofstream file1("data/game/state.dat");
             if (file)
@@ -557,15 +676,7 @@ int main(int argc, char* argv[])
             }
             file1.close();
         }
-        g_text_object.SetText("LEVEL: " + std::to_string(g_level));
-        g_text_object.LoadFromRenderText(menu_font, g_screen);
-        g_text_object.SetTextColor(0, 0, 0);
-        g_text_object.RenderText(g_screen, 300, 10, NULL);
 
-        SDL_RenderDrawRect(g_screen, &rect);
-        SDL_SetRenderDrawColor(g_screen, 255, 0, 0, 0);
-        HP.w = p_player.get_hp_() * 2;
-        SDL_RenderFillRect(g_screen, &HP);
 
         mouse.DrawMouse(g_screen);
 

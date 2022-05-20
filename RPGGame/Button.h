@@ -14,8 +14,10 @@ public:
 	BaseObject background;
 	TextObject Content;
 	void SetText(std::string txt) { text = txt; }
-	void SetRect(SDL_Rect _rect) { rect_ = _rect; }
+	void SetRect(const SDL_Rect &_rect) { rect_ = _rect; }
+	void SetButtonColor(Uint8 red, Uint8 green, Uint8 blue);
 	void Render(SDL_Renderer* des, TTF_Font* p_font);
+	bool MouseOver(SDL_Event events, Mouse clone);
 	bool OnClick(SDL_Event events, Mouse clone);
 	void Free();
 private:

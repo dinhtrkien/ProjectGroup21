@@ -23,13 +23,13 @@
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{8e651c64-fdc0-4b08-86e5-a8dbdd0c6674}</ProjectGuid>
     <RootNamespace>RPGGame</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -153,13 +153,12 @@
     <ClCompile Include="enemy.cpp" />
     <ClCompile Include="explosion.cpp" />
     <ClCompile Include="game_map.cpp" />
-    <ClCompile Include="Game_Over_Menu.cpp" />
     <ClCompile Include="items.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MainMenucpp.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="mouse.cpp" />
     <ClCompile Include="Point.cpp" />
+    <ClCompile Include="menu.cpp" />
     <ClCompile Include="TextObject.cpp" />
     <ClCompile Include="timer.cpp" />
     <ClCompile Include="Vector2D.cpp" />
@@ -173,9 +172,8 @@
     <ClInclude Include="enemy.h" />
     <ClInclude Include="explosion.h" />
     <ClInclude Include="game_map.h" />
-    <ClInclude Include="Game_Over_Menu.h" />
     <ClInclude Include="items.h" />
-    <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="menu.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="mouse.h" />
     <ClInclude Include="Point.h" />

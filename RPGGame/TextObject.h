@@ -20,6 +20,7 @@ public:
 	void free();
 
 	void SetTextColor(Uint8 red, Uint8 green, Uint8 blue);
+	void SetTextSize(int w, int h);
 	
 	int GetWidth () const { return width_; }
 	int GetHeight () const { return height_; }

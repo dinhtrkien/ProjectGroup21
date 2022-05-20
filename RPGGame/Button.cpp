@@ -8,9 +8,23 @@ void Button::Render(SDL_Renderer* des, TTF_Font* p_font)
 	Content.RenderText(des, rect_.x, rect_.y, NULL);
 }
 
+void Button::SetButtonColor(Uint8 red, Uint8 green, Uint8 blue)
+{
+	Content.SetTextColor(red, green, blue);
+}
+
+bool Button::MouseOver(SDL_Event events, Mouse clone)
+{
+	if (Collision::AABB(clone.GetRect(), rect_))
+	{
+		return true;
+	}
+	return false;
+}
+
 bool Button::OnClick(SDL_Event events, Mouse clone)
 {
-	if (Collision::AABB(clone.GetRect(), rect_)&& (events.type == SDL_MOUSEBUTTONDOWN))
+	if (Collision::AABB(clone.GetRect(), rect_) && (events.type == SDL_MOUSEBUTTONDOWN))
 	{
 			if (events.button.button == SDL_BUTTON_LEFT)
 			{

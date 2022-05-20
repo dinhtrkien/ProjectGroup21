@@ -1,7 +1,4 @@
-﻿  player.cpp
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan 2\projectgroup21\rpggame\commonfunc.h(37): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan 2\projectgroup21\rpggame\commonfunc.h(50): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan 2\projectgroup21\rpggame\player.h(73): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan 2\projectgroup21\rpggame\player.h(74): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan 2\projectgroup21\rpggame\player.cpp(215): warning C4018: '<': signed/unsigned mismatch
-  RPGGame.vcxproj -> D:\Tài liệu của THÀNH\UET\Năm 1-2\Lập trình nâng cao\quan 2\ProjectGroup21\RPGGame\Debug\RPGGame.exe
+﻿  menu.cpp
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(37,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(50,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  RPGGame.vcxproj -> C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\RPGGame\Debug\RPGGame.exe
