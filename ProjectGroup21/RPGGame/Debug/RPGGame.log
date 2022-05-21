@@ -1,7 +1,4 @@
-﻿  enemy.cpp
-C:\Users\Admin\source\repos\RPGGame\commonfunc.h(37,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
-C:\Users\Admin\source\repos\RPGGame\commonfunc.h(50,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
-C:\Users\Admin\source\repos\RPGGame\player.h(73,43): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
-C:\Users\Admin\source\repos\RPGGame\player.h(74,43): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
-C:\Users\Admin\source\repos\RPGGame\enemy.cpp(129,20): warning C4018: '<': signed/unsigned mismatch
-  RPGGame.vcxproj -> C:\Users\Admin\source\repos\RPGGame\Debug\RPGGame.exe
+﻿  menu.cpp
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(37,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(50,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  RPGGame.vcxproj -> C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\Debug\RPGGame.exe

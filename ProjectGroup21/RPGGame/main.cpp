@@ -58,7 +58,7 @@ bool InitData()
         }
         else
         {
-            menu_font = TTF_OpenFont("font/ancient_modern_tales.ttf", 20);
+            menu_font = TTF_OpenFont("font/BreathFire.ttf", 30);
             if (menu_font == NULL)
             {
                 success = false;
@@ -72,7 +72,7 @@ bool InitData()
 
 bool LoadBackGround()
 {
-    bool ret = g_background.LoadImage("img/bg.png", g_screen);
+    bool ret = g_background.LoadImage("img/background.png", g_screen);
     if (ret == false)
         return false;
 
@@ -171,7 +171,7 @@ int main(int argc, char* argv[])
             }
             p_player.HandleInputAction(g_event, g_screen);
         }
-
+        mouse.Free();
         mouse.update();
 
         SDL_SetRenderDrawColor(g_screen, 255, 49, 0, 0);
@@ -678,10 +678,8 @@ int main(int argc, char* argv[])
             file1.close();
         }
 
-
         mouse.DrawMouse(g_screen);
 
-       
         SDL_RenderPresent(g_screen);
 
         int real_time = fps_time.get_ticks();
