@@ -329,10 +329,12 @@ void Player::CheckMapCollision(Map& map_data)
 		y_pos_ = 0;
 	if (y_pos_ + height_frame_ > map_data.max_y_)
 		y_pos_ = (float)(map_data.max_y_ - height_frame_);
+
+	//Camera(map_data);
 }
 	
 
-
+/*
 void Player::Camera(Map& map_data)
 {
 	map_data.start_x_ = (int)x_pos_ - SCREEN_WIDTH / 2;
@@ -347,4 +349,4 @@ void Player::Camera(Map& map_data)
 	if (map_data.start_y_ + SCREEN_HEIGHT >= map_data.max_y_)
 		map_data.start_y_ = map_data.max_y_ - SCREEN_HEIGHT;
 }
-
+*/

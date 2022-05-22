@@ -365,10 +365,10 @@ int main(int argc, char* argv[])
 
             Map map_data = game_map.GetMap();
 
-            p_player.SetMapXY(map_data.start_x_, map_data.start_y_);
+            //p_player.SetMapXY(map_data.start_x_, map_data.start_y_);
             p_player.CheckMapCollision(map_data);
 
-            game_map.SetMap(map_data);
+            //game_map.SetMap(map_data);
             game_map.DrawMap(g_screen);
             if (is_new_game)
             {
@@ -542,7 +542,7 @@ int main(int argc, char* argv[])
                 }
             }*/
 
-            /*for (int i = 0; i < Enemy_List.size(); i++)
+            for (int i = 0; i < Enemy_List.size(); i++)
             {
                 for (int j = i; j < Enemy_List.size(); j++)
                 {
@@ -572,7 +572,7 @@ int main(int argc, char* argv[])
                     }
                 }
 
-            }*/
+            }
 
             std::vector<Bullet*> bullet_list = p_player.get_bullet_list();
 
