@@ -38,6 +38,8 @@ public:
 	int get_bullet_range() const { return bullet_range; }
 
 	void HandleMove(const int& x_border, const int& y_border);
+
+	bool CheckMapCollision(Map& map_data);
 private:
 	Explosion boom;
 	double direct_angle;
@@ -49,6 +51,7 @@ private:
 	int des_y_;// toa do dich vien dan
 	bool is_move_; // trang thai vien dan
 	int bullet_range; // tam xa cua vien dan
+	float x_val_, y_val_;
 };
 
 #endif // !BULLET_H

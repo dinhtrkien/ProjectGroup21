@@ -499,7 +499,17 @@ int main(int argc, char* argv[])
                 }
 
                 Enemy_List[i]->HandleBullet(g_screen);
-
+                if (Enemy_List[i]->get_bullet_list()[0]->CheckMapCollision(map_data))
+                {
+                    Bullet* p_bullet = Enemy_List[i]->get_bullet_list()[0];
+                    for (int k = 0; k < 16; k++)
+                    {
+                        explosion.Set_Clip();
+                        explosion.SetRect(p_bullet->GetRect().x - 32, p_bullet->GetRect().y - 32);
+                        explosion.Set_Frame_(k);
+                        explosion.Show(g_screen);
+                    }
+                }
                 SDL_Rect player_rect;
                 player_rect.x = p_player.GetRect().x;
                 player_rect.y = p_player.GetRect().y;
@@ -569,6 +579,18 @@ int main(int argc, char* argv[])
             for (int i = 0; i < bullet_list.size(); i++)
             {
                 Bullet* p_bullet = bullet_list[i];
+              
+                if (p_bullet->CheckMapCollision(map_data))
+                {
+                    for (int k = 0; k < 16; k++)
+                    {
+                        explosion.Set_Clip();
+                        explosion.SetRect(p_bullet->GetRect().x - 32, p_bullet->GetRect().y - 32);
+                        explosion.Set_Frame_(k);
+                        explosion.Show(g_screen);
+                    }
+                    p_player.Free_Bullet(i);
+                }
                 for (int j = 0; j < Enemy_List.size(); j++)
                 {
                     Enemy* e_clone = Enemy_List[j];
@@ -578,6 +600,7 @@ int main(int argc, char* argv[])
                     Enemy_Rect.y = e_clone->GetRect().y;
                     Enemy_Rect.w = e_clone->get_width_frame();
                     Enemy_Rect.h = e_clone->get_height_frame();
+                   
                     if (Collision::AABB(Bullet_Rect, Enemy_Rect)) // Neu dan ban trung
                     {
                         for (int k = 0; k < 16; k++)
@@ -588,8 +611,8 @@ int main(int argc, char* argv[])
                             explosion.Show(g_screen);
                         }
                         Enemy_List[j]->set_hp(Enemy_List[j]->get_hp() - p_player.get_damage());
-                        p_player.Free_Bullet(i); // Xoa vien dan
-
+                        // Xoa vien dan
+                        p_player.Free_Bullet(i);
                     }
 
                 }
