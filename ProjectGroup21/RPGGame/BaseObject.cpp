@@ -40,8 +40,6 @@ bool BaseObject::LoadImage(std::string path, SDL_Renderer* screen)
 void BaseObject::Render(SDL_Renderer* des, const SDL_Rect* clip /*NULL*/, const double angle)
 {
 	SDL_Rect renderquad = { rect_.x, rect_.y, rect_.w, rect_.h }; // kich thuoc va vi tri
-
-	//SDL_RenderCopy(des, p_object_, clip, &renderquad); // day thong so cua p_object_ sang des
 	SDL_RenderCopyEx(des, p_object_, NULL, &renderquad, angle,NULL, SDL_FLIP_NONE); // angle la goc xoay, dung de render mui ten
 }
 

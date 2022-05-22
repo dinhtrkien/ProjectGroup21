@@ -125,6 +125,7 @@ int main(int argc, char* argv[])
 
     TextObject text_level;
     TextObject txt;
+    TextObject game_score;
 
     Timer time_shoot;
     GameMap game_map;
@@ -138,7 +139,14 @@ int main(int argc, char* argv[])
 
     int level = 1;
     int num_enemy = 1;
-
+    int score = 0;
+    int high_score = 0;
+    std::ifstream in_file("data/game/high_score.dat");
+    if (in_file)
+    {
+        in_file >> high_score;
+        in_file.close();
+    }
     std::vector<Enemy*> Enemy_List;
 
     std::vector<Items*> items_list;
@@ -380,7 +388,13 @@ int main(int argc, char* argv[])
                 p_player.LoadImage("img/player_down.png", g_screen);
                 p_player.Main_Set_clip();
                 p_player.set_damage(10);
-
+                score = 0;
+                std::ifstream infile("data/game/high_score.dat");
+                if (infile)
+                {
+                    infile >> high_score;
+                    infile.close();
+                }
                 for (int i = 0; i < Enemy_List.size(); i++)
                 {
                     Enemy* e_clone = Enemy_List[i];
@@ -430,6 +444,13 @@ int main(int argc, char* argv[])
                 {
                     infile >> level;
                     infile >> num_enemy;
+                    infile >> score;
+                    infile.close();
+                }
+                infile.open("data/game/high_score.dat");
+                if (infile)
+                {
+                    infile >> high_score;
                     infile.close();
                 }
                 Enemy_List = MakeEnemyList(num_enemy);
@@ -502,11 +523,12 @@ int main(int argc, char* argv[])
                 if (Enemy_List[i]->get_bullet_list()[0]->CheckMapCollision(map_data))
                 {
                     Bullet* p_bullet = Enemy_List[i]->get_bullet_list()[0];
-                    for (int k = 0; k < 16; k++)
+                    explosion.SetRect(p_bullet->GetRect().x, p_bullet->GetRect().y);
+                    for (int k = 0; k < 4; k++)
                     {
                         explosion.Set_Clip();
-                        explosion.SetRect(p_bullet->GetRect().x - 32, p_bullet->GetRect().y - 32);
                         explosion.Set_Frame_(k);
+                        explosion.set_angle(p_bullet->get_direct_angle());
                         explosion.Show(g_screen);
                     }
                 }
@@ -521,11 +543,12 @@ int main(int argc, char* argv[])
                     Enemy_List[i]->get_bullet_list()[0]->set_is_move(false);
                     p_player.set_hp_(p_player.get_hp_() - e_damage);
                     Bullet* p_bullet = Enemy_List[i]->get_bullet_list()[0];
-                    for (int k = 0; k < 16; k++)
+                    explosion.SetRect(p_bullet->GetRect().x, p_bullet->GetRect().y);
+                    for (int k = 0; k < 4; k++)
                     {
                         explosion.Set_Clip();
-                        explosion.SetRect(p_bullet->GetRect().x - 32, p_bullet->GetRect().y - 32);
                         explosion.Set_Frame_(k);
+                        explosion.set_angle(p_bullet->get_direct_angle());
                         explosion.Show(g_screen);
                     }
                 }
@@ -582,11 +605,12 @@ int main(int argc, char* argv[])
               
                 if (p_bullet->CheckMapCollision(map_data))
                 {
-                    for (int k = 0; k < 16; k++)
+                    explosion.SetRect(p_bullet->GetRect().x, p_bullet->GetRect().y);
+                    for (int k = 0; k < 4; k++)
                     {
                         explosion.Set_Clip();
-                        explosion.SetRect(p_bullet->GetRect().x - 32, p_bullet->GetRect().y - 32);
                         explosion.Set_Frame_(k);
+                        explosion.set_angle(p_bullet->get_direct_angle());
                         explosion.Show(g_screen);
                     }
                     p_player.Free_Bullet(i);
@@ -603,11 +627,12 @@ int main(int argc, char* argv[])
                    
                     if (Collision::AABB(Bullet_Rect, Enemy_Rect)) // Neu dan ban trung
                     {
-                        for (int k = 0; k < 16; k++)
+                        explosion.SetRect(p_bullet->GetRect().x, p_bullet->GetRect().y);
+                        for (int k = 0; k < 4; k++)
                         {
                             explosion.Set_Clip();
-                            explosion.SetRect(p_bullet->GetRect().x - 32, p_bullet->GetRect().y - 32);
                             explosion.Set_Frame_(k);
+                            explosion.set_angle(p_bullet->get_direct_angle());
                             explosion.Show(g_screen);
                         }
                         Enemy_List[j]->set_hp(Enemy_List[j]->get_hp() - p_player.get_damage());
@@ -637,6 +662,7 @@ int main(int argc, char* argv[])
                     e_clone = NULL;
                     Enemy_List.erase(Enemy_List.begin() + i);
                     delete e_clone;
+                    score++;
                 }
             }
 
@@ -673,6 +699,11 @@ int main(int argc, char* argv[])
             text_level.SetTextColor(255, 0, 0);
             text_level.RenderText(g_screen, 600, 10, NULL);
 
+            game_score.SetText("YOUR SCORE: " + std::to_string(score));
+            game_score.LoadFromRenderText(menu_font, g_screen);
+            game_score.SetTextColor(255, 0, 0);
+            game_score.RenderText(g_screen, 800, 10, NULL);
+
             SDL_RenderDrawRect(g_screen, &rect);
             SDL_SetRenderDrawColor(g_screen, 255, 0, 0, 0);
             HP.w = p_player.get_hp_() * 2;
@@ -689,6 +720,7 @@ int main(int argc, char* argv[])
             {
                 file << level << std::endl;
                 file << Enemy_List.size() << std::endl;
+                file << score << std::endl;
                 file.close();
             }
            
@@ -696,6 +728,12 @@ int main(int argc, char* argv[])
             {
                 is_paused = true;
                 is_game_over = true;
+                if (score > high_score) high_score = score;
+                std::ofstream out_file("data/game/high_score.dat");
+                if (out_file)
+                {
+                    out_file << high_score;
+                }
             }
             std::ofstream file1("data/game/state.dat");
             if (file)

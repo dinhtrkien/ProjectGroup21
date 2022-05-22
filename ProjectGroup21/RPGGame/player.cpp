@@ -184,7 +184,7 @@ void Player::HandleInputAction(SDL_Event events, SDL_Renderer* screen)
 			{
 				Bullet* p_bullet = new Bullet();
 				p_bullet->LoadImage("img/bullet12.png", screen);
-				p_bullet->SetRect(this->rect_.x + 32, this->rect_.y + 36); // lay vi tri render
+				p_bullet->SetRect(this->rect_.x, this->rect_.y); // lay vi tri render
 				p_bullet->set_is_move(true); // dan duoc ban
 				Uint32 Button;
 				int dx, dy;

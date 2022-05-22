@@ -5,6 +5,7 @@ Explosion::Explosion()
 	frame_ = 0;
 	width_frame_ = 0;
 	height_frame_ = 0;
+	angle = 0;
 	for (int i = 0; i < 16; i++)
 		frame_clip_[i] = { 0,0,0,0 };
 }
@@ -56,7 +57,7 @@ void Explosion::Set_Clip()
 		frame_clip_[4].w = width_frame_;
 		frame_clip_[4].h = height_frame_;
 
-		frame_clip_[5].x = width_frame_*5;
+		/*frame_clip_[5].x = width_frame_ * 5;
 		frame_clip_[5].y = 0;
 		frame_clip_[5].w = width_frame_;
 		frame_clip_[5].h = height_frame_;
@@ -109,7 +110,7 @@ void Explosion::Set_Clip()
 		frame_clip_[15].x = width_frame_*15;
 		frame_clip_[15].y = 0;
 		frame_clip_[15].w = width_frame_;
-		frame_clip_[15].h = height_frame_;
+		frame_clip_[15].h = height_frame_;*/
 
 	}
 }
@@ -120,5 +121,5 @@ void Explosion::Show(SDL_Renderer* des)
 
 		SDL_Rect renderQuad = { rect_.x, rect_.y, width_frame_, height_frame_ };
 
-		SDL_RenderCopy(des, p_object_, current_clip, &renderQuad);
+		SDL_RenderCopyEx(des, p_object_, current_clip, &renderQuad,angle,NULL,SDL_FLIP_NONE);
 }
