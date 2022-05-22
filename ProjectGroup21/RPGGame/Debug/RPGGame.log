@@ -1,4 +1,2 @@
-﻿  menu.cpp
-C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(37,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
-C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(50,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
-  RPGGame.vcxproj -> C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\Debug\RPGGame.exe
+﻿  Collision.cpp
+  RPGGame.vcxproj -> D:\Tài liệu của THÀNH\UET\Năm 1-2\Lập trình nâng cao\quan2\ProjectGroup21\ProjectGroup21\RPGGame\Debug\RPGGame.exe

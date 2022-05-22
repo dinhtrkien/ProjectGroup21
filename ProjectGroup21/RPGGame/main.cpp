@@ -485,7 +485,11 @@ int main(int argc, char* argv[])
 
             for (int i = 0; i < Enemy_List.size(); i++)
             {
+
+
                 Enemy_List[i]->Make_Action(p_player.GetRect().x, p_player.GetRect().y, g_screen, Enemy_List);
+
+				Enemy_List[i]->CheckMapCollision(map_data);
 
                 Enemy_List[i]->Show(g_screen);
 

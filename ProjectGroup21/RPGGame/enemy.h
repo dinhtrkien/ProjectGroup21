@@ -97,6 +97,8 @@ public:
 		}
 	}
 
+	void CheckMapCollision(Map& map_data);
+
 private:
 	std::vector<Bullet*> e_bullet_list_;
 	int x_pos_;
@@ -113,6 +115,9 @@ private:
 	int first_x_;
 	int first_y_;
 	
+	float x_val_;
+	float y_val_;
+
 	int des_x_;
 	int des_y_;
 
