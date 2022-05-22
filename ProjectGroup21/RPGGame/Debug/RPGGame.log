@@ -1,19 +1,13 @@
-﻿  main.cpp
-C:\Users\Admin\source\repos\ProjectGroup21\RPGGame\commonfunc.h(37,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
-C:\Users\Admin\source\repos\ProjectGroup21\RPGGame\commonfunc.h(50,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
-C:\Users\Admin\source\repos\ProjectGroup21\RPGGame\player.h(73,43): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
-C:\Users\Admin\source\repos\ProjectGroup21\RPGGame\player.h(74,43): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
-C:\Users\Admin\source\repos\ProjectGroup21\RPGGame\main.cpp(384,35): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Admin\source\repos\ProjectGroup21\RPGGame\main.cpp(394,35): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Admin\source\repos\ProjectGroup21\RPGGame\main.cpp(436,35): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Admin\source\repos\ProjectGroup21\RPGGame\main.cpp(472,74): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Admin\source\repos\ProjectGroup21\RPGGame\main.cpp(486,31): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Admin\source\repos\ProjectGroup21\RPGGame\main.cpp(545,31): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Admin\source\repos\ProjectGroup21\RPGGame\main.cpp(547,35): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Admin\source\repos\ProjectGroup21\RPGGame\main.cpp(579,31): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Admin\source\repos\ProjectGroup21\RPGGame\main.cpp(594,35): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Admin\source\repos\ProjectGroup21\RPGGame\main.cpp(622,31): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Admin\source\repos\ProjectGroup21\RPGGame\main.cpp(626,31): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\Admin\source\repos\ProjectGroup21\RPGGame\main.cpp(643,31): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Admin\source\repos\ProjectGroup21\RPGGame\main.cpp(683,31): warning C4018: '<': signed/unsigned mismatch
-  RPGGame.vcxproj -> C:\Users\Admin\source\repos\ProjectGroup21\RPGGame\Debug\RPGGame.exe
+﻿  bullet.cpp
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\projectgroup21\rpggame\commonfunc.h(37): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\projectgroup21\rpggame\commonfunc.h(50): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  enemy.cpp
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\projectgroup21\rpggame\commonfunc.h(37): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\projectgroup21\rpggame\commonfunc.h(50): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\projectgroup21\rpggame\enemy.cpp(129): warning C4018: '<': signed/unsigned mismatch
+  player.cpp
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\projectgroup21\rpggame\commonfunc.h(37): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\projectgroup21\rpggame\commonfunc.h(50): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\projectgroup21\rpggame\player.cpp(209): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  RPGGame.vcxproj -> D:\Tài liệu của THÀNH\UET\Năm 1-2\Lập trình nâng cao\quan\ProjectGroup21\ProjectGroup21\RPGGame\Debug\RPGGame.exe

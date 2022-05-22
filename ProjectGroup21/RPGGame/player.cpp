@@ -254,7 +254,7 @@ void Player::CheckMapCollision(Map& map_data)
 	int y2 = 0;
 
 //Check va cham voi tile
-	//Ckeck theo chieu doc
+	//Ckeck theo chieu ngang
 
 	int height_min = height_frame_ < TILE_SIZE ? height_frame_ : TILE_SIZE;
 
@@ -285,7 +285,7 @@ void Player::CheckMapCollision(Map& map_data)
 		}
 	}
 
-	//Check theo chieu ngang
+	//Check theo chieu doc
 
 	int width_min = width_frame_ < TILE_SIZE ? width_frame_ : TILE_SIZE;
 

@@ -39,7 +39,7 @@ bool Bullet::CheckMapCollision(Map& map_data)
 	int y2 = 0;
 
 	//Check va cham voi tile
-		//Ckeck theo chieu doc
+		//Ckeck theo chieu ngang
 
 	int height_min = rect_.h < TILE_SIZE ? rect_.h : TILE_SIZE;
 
@@ -69,7 +69,7 @@ bool Bullet::CheckMapCollision(Map& map_data)
 		}
 	}
 
-	//Check theo chieu ngang
+	//Check theo chieu doc
 
 	int width_min = rect_.w < TILE_SIZE ? rect_.w : TILE_SIZE;
 
@@ -99,6 +99,4 @@ bool Bullet::CheckMapCollision(Map& map_data)
 		}
 	}
 	return false;
-
-	//Check va cham voi ria map
 }

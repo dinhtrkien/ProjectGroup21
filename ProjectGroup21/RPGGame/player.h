@@ -70,8 +70,8 @@ public:
 	void set_damage(const int& _damage) { damage = _damage; }
 	int get_damage() { return damage; }
 
-	void set_x_pos(const int& _x) { x_pos_ = _x; }
-	void set_y_pos(const int& _x) { y_pos_ = _x; }
+	void set_x_pos(const int& _x) { x_pos_ = (float)_x; }
+	void set_y_pos(const int& _x) { y_pos_ = (float)_x; }
 
 	void SetMapXY(const int map_x, const int map_y)
 	{

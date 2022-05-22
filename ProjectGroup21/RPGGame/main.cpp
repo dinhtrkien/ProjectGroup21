@@ -542,7 +542,7 @@ int main(int argc, char* argv[])
                 }
             }*/
 
-            for (int i = 0; i < Enemy_List.size(); i++)
+            /*for (int i = 0; i < Enemy_List.size(); i++)
             {
                 for (int j = i; j < Enemy_List.size(); j++)
                 {
@@ -572,7 +572,7 @@ int main(int argc, char* argv[])
                     }
                 }
 
-            }
+            }*/
 
             std::vector<Bullet*> bullet_list = p_player.get_bullet_list();
 
@@ -611,8 +611,8 @@ int main(int argc, char* argv[])
                             explosion.Show(g_screen);
                         }
                         Enemy_List[j]->set_hp(Enemy_List[j]->get_hp() - p_player.get_damage());
-                        // Xoa vien dan
-                        p_player.Free_Bullet(i);
+                        
+                        p_player.Free_Bullet(i); //Xoa vien dan
                     }
 
                 }

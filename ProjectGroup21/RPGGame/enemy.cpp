@@ -153,7 +153,7 @@ void Enemy::CheckMapCollision(Map& map_data)
 	if (is_move)
 	{
 		x_val_ += x_speed_;
-		x_val_ += y_speed_;
+		y_val_ += y_speed_;
 	}
 
 	int x1 = 0;
@@ -162,16 +162,16 @@ void Enemy::CheckMapCollision(Map& map_data)
 	int y1 = 0;
 	int y2 = 0;
 
-	//Check va cham voi tile
-		//Ckeck theo chieu doc
+//Check va cham voi tile
+	//Ckeck theo chieu ngang
 
-	int height_min = height_frame_ < TILE_SIZE ? height_frame_ : TILE_SIZE;
+	int height_min = TILE_SIZE;
 
-	x1 = (int)(x_pos_ + x_val_) / TILE_SIZE;
-	x2 = (int)(x_pos_ + x_val_ + width_frame_ - 1) / TILE_SIZE;
+	x1 = (int)((x_pos_ + x_val_) / TILE_SIZE);
+	x2 = (int)((x_pos_ + x_val_ + width_frame_ - 1) / TILE_SIZE);
 
-	y1 = (int)y_pos_ / TILE_SIZE;
-	y2 = (int)(y_pos_ + height_min) / TILE_SIZE;
+	y1 = (int)(y_pos_ / TILE_SIZE);
+	y2 = (int)((y_pos_ + height_min) / TILE_SIZE);
 
 	if (x1 >= 0 && x2 < MAX_MAP_X && y1 >= 0 && y2 < MAX_MAP_Y)
 	{
@@ -179,7 +179,7 @@ void Enemy::CheckMapCollision(Map& map_data)
 		{
 			if (map_data.tile[y1][x1] != GRASS_TILE || map_data.tile[y2][x1] != GRASS_TILE)
 			{
-				x_pos_ = (float)(x1 + 1) * TILE_SIZE;
+				x_pos_ = (x1 + 1) * TILE_SIZE;
 				x_val_ = 0;
 			}
 		}
@@ -187,22 +187,22 @@ void Enemy::CheckMapCollision(Map& map_data)
 		{
 			if (map_data.tile[y1][x2] != GRASS_TILE || map_data.tile[y2][x2] != GRASS_TILE)
 			{
-				x_pos_ = (float)x2 * TILE_SIZE;
+				x_pos_ = x2 * TILE_SIZE;
 				x_pos_ -= (width_frame_ + 1);
 				x_val_ = 0;
 			}
 		}
 	}
 
-	//Check theo chieu ngang
+	//Check theo chieu doc
 
 	int width_min = width_frame_ < TILE_SIZE ? width_frame_ : TILE_SIZE;
 
-	x1 = (int)(x_pos_) / TILE_SIZE;
+	x1 = (int)((x_pos_) / TILE_SIZE);
 	x2 = (int)(x_pos_ + width_min) / TILE_SIZE;
 
-	y1 = (int)(y_pos_ + y_val_) / TILE_SIZE;
-	y2 = (int)(y_pos_ + y_val_ + height_frame_) / TILE_SIZE;
+	y1 = (int)((y_pos_ + y_val_) / TILE_SIZE);
+	y2 = (int)((y_pos_ + y_val_ + height_frame_ - 1) / TILE_SIZE);
 
 	if (x1 >= 0 && x2 < MAX_MAP_X && y1 >= 0 && y2 < MAX_MAP_Y)
 	{
@@ -210,7 +210,7 @@ void Enemy::CheckMapCollision(Map& map_data)
 		{
 			if (map_data.tile[y2][x1] != GRASS_TILE || map_data.tile[y2][x2] != GRASS_TILE)
 			{
-				y_pos_ = (float)y2 * TILE_SIZE;
+				y_pos_ = y2 * TILE_SIZE;
 				y_pos_ -= (height_frame_ + 1);
 				y_val_ = 0;
 			}
@@ -219,19 +219,19 @@ void Enemy::CheckMapCollision(Map& map_data)
 		{
 			if (map_data.tile[y1][x1] != GRASS_TILE || map_data.tile[y1][x2] != GRASS_TILE)
 			{
-				y_pos_ = (float)(y1 + 1) * TILE_SIZE;
+				y_pos_ = (y1 + 1) * TILE_SIZE;
 				y_val_ = 0;
 			}
 		}
 	}
 
-	//Check va cham voi ria map
+//Check va cham voi ria map
 	if (x_pos_ < 0)
 		x_pos_ = 0;
 	if (x_pos_ + width_frame_ > map_data.max_x_)
-		x_pos_ = (float)(map_data.max_x_ - width_frame_ - 1);
+		x_pos_ = (map_data.max_x_ - width_frame_);
 	if (y_pos_ < 0)
 		y_pos_ = 0;
 	if (y_pos_ + height_frame_ > map_data.max_y_)
-		y_pos_ = (float)(map_data.max_y_ - height_frame_ - 1);
+		y_pos_ = (map_data.max_y_ - height_frame_);
 }
