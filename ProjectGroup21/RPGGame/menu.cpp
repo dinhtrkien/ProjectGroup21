@@ -26,7 +26,6 @@ void GameBoard::RenderMainMenu(SDL_Renderer* des, TTF_Font* p_font)
 }
 void GameBoard::MainMenuFree() 
 {
-	mainmenu_background.Free();
 	mainmenu_help.Free();
 	game_title.free();
 	mainmenu_play.Free();

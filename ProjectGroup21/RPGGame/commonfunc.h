@@ -48,6 +48,4 @@ typedef struct Map
 	char* file_name_;
 };
 
-
-
 #endif // !COMMON_FUNCTION_H_

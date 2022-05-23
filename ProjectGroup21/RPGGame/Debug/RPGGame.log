@@ -1,4 +1,63 @@
-﻿  menu.cpp
+﻿  BaseObject.cpp
 C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(36,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
 C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(49,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  Button.cpp
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(36,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(49,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  TextObject.cpp
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(36,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(49,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  bullet.cpp
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(36,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(49,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  commonfunc.cpp
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(36,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(49,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  enemy.cpp
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(36,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(49,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\enemy.cpp(129,20): warning C4018: '<': signed/unsigned mismatch
+  explosion.cpp
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(36,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(49,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  game_map.cpp
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(36,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(49,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  items.cpp
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(36,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(49,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  main.cpp
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(36,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(49,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(439,35): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(449,35): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(498,35): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(534,74): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(548,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(572,71): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(593,71): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(599,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(601,35): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(632,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(643,71): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(648,35): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(665,75): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(677,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(681,31): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(699,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(747,31): warning C4018: '<': signed/unsigned mismatch
+  menu.cpp
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(36,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(49,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  mouse.cpp
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(36,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(49,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  player.cpp
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(36,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(49,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\player.cpp(209,16): warning C4018: '<': signed/unsigned mismatch
+  timer.cpp
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(36,2): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\commonfunc.h(49,2): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
+  Generating Code...
   RPGGame.vcxproj -> C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\Debug\RPGGame.exe

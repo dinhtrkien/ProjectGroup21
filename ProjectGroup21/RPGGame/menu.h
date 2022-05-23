@@ -10,7 +10,6 @@ public:
 
 	//main menu
 
-	BaseObject mainmenu_background;
 	TextObject game_title;
 	Button mainmenu_play;
 	Button mainmenu_exit;

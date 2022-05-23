@@ -72,7 +72,7 @@ bool InitData()
 
 bool LoadBackGround()
 {
-    bool ret = g_menu_background.LoadImage("img/background2.png", g_screen);
+    bool ret = g_menu_background.LoadImage("img/background.png", g_screen);
     if (ret == false)
         return false;
 
@@ -412,15 +412,12 @@ int main(int argc, char* argv[])
                     is_paused = true;
                 }
             }
-
             game_map.DrawMap(g_screen);
 
             Map map_data = game_map.GetMap();
 
-            //p_player.SetMapXY(map_data.start_x_, map_data.start_y_);
             p_player.CheckMapCollision(map_data);
 
-            //game_map.SetMap(map_data);
             game_map.DrawMap(g_screen);
             if (is_new_game)
             {
@@ -576,6 +573,7 @@ int main(int argc, char* argv[])
                         explosion.Show(g_screen);
                     }
                 }
+
                 SDL_Rect player_rect;
                 player_rect.x = p_player.GetRect().x;
                 player_rect.y = p_player.GetRect().y;
@@ -598,17 +596,6 @@ int main(int argc, char* argv[])
                 }
             }
 
-            /*for (int i = 0; i < Enemy_List.size() - 1; i++)
-            {
-                for (int j = i + 1; j < Enemy_List.size(); j++)
-                {
-                    while (sqrt(pow(Enemy_List[i]->GetRect().x - Enemy_List[j]->GetRect().x, 2) + pow(Enemy_List[i]->GetRect().x - Enemy_List[j]->GetRect().x, 2)) < 100)
-                    {
-                        Enemy_List[i]->SetRect(Enemy_List[i]->GetRect().x + 8, Enemy_List[i]->GetRect().y + 0);
-                    }
-                }
-            }*/
-
             for (int i = 0; i < Enemy_List.size(); i++)
             {
                 for (int j = i; j < Enemy_List.size(); j++)
@@ -621,7 +608,6 @@ int main(int argc, char* argv[])
                     rect2.w = Enemy_List[j]->get_width_frame();
                     rect2.h = Enemy_List[j]->get_height_frame();
 
-                    
                     if (Collision::AABB(rect1, rect2))
                     {
                         Enemy_List[i]->SetRect(rect1.x - Enemy_List[i]->get_x_speed(), rect1.y - Enemy_List[i]->get_y_speed());
@@ -762,7 +748,9 @@ int main(int argc, char* argv[])
             {
                 Enemy_List[i]->Export("data/Enemy/enemy_" + std::to_string(i) + ".dat");
             }
+
             std::ofstream file("data/game/game.dat");
+
             if (file)
             {
                 file << level << std::endl;
