@@ -6,7 +6,7 @@ Explosion::Explosion()
 	width_frame_ = 0;
 	height_frame_ = 0;
 	angle = 0;
-	for (int i = 0; i < 16; i++)
+	for (int i = 0; i < 4; i++)
 		frame_clip_[i] = { 0,0,0,0 };
 }
 
@@ -21,7 +21,7 @@ bool Explosion::LoadImage(std::string path, SDL_Renderer* screen)
 
 	if (ret == true)
 	{
-		width_frame_ = rect_.w/16;
+		width_frame_ = rect_.w/5;
 		height_frame_ = rect_.h;
 	}
 

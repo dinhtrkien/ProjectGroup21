@@ -81,7 +81,7 @@ public:
 
 	void CheckMapCollision(Map& map_data);
 
-	void Camera(Map& map_data);
+	// Camera(Map& map_data);
 
 	
 	

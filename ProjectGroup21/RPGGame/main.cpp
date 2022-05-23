@@ -595,7 +595,7 @@ int main(int argc, char* argv[])
                     }
                 }
             }
-
+			/*
             for (int i = 0; i < Enemy_List.size(); i++)
             {
                 for (int j = i; j < Enemy_List.size(); j++)
@@ -626,7 +626,7 @@ int main(int argc, char* argv[])
                 }
 
             }
-
+			*/
             std::vector<Bullet*> bullet_list = p_player.get_bullet_list();
 
             for (int i = 0; i < bullet_list.size(); i++)
