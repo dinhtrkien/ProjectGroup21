@@ -18,8 +18,8 @@
 #include "MainMenu.h"
 #include "menu.h"
 
-BaseObject g_background;
-TTF_Font* menu_font = NULL;
+BaseObject g_menu_background;
+TTF_Font* g_menu_font = NULL;
 
 bool InitData()
 {
@@ -58,8 +58,8 @@ bool InitData()
         }
         else
         {
-            menu_font = TTF_OpenFont("font/BreathFire.ttf", 30);
-            if (menu_font == NULL)
+            g_menu_font = TTF_OpenFont("font/BreathFire.ttf", 30);
+            if (g_menu_font == NULL)
             {
                 success = false;
             }
@@ -72,7 +72,7 @@ bool InitData()
 
 bool LoadBackGround()
 {
-    bool ret = g_background.LoadImage("img/background.png", g_screen);
+    bool ret = g_menu_background.LoadImage("img/background2.png", g_screen);
     if (ret == false)
         return false;
 
@@ -81,7 +81,7 @@ bool LoadBackGround()
 
 void close()
 {
-    g_background.Free();
+    g_menu_background.Free();
     SDL_DestroyRenderer(g_screen);
     g_screen = NULL;
     SDL_DestroyWindow(g_window);
@@ -118,11 +118,11 @@ int main(int argc, char* argv[])
     bool is_new_game = false;
     bool is_continued_game = true;
     bool is_game_over = false;
+    bool is_help_menu = false;
+    bool is_main_menu = true;
 
-    GameBoard main_menu;
-    GameBoard game_over;
-    GameBoard game_paused;
-
+    GameBoard menu;
+    
     TextObject text_level;
     TextObject txt;
     TextObject game_score;
@@ -184,111 +184,154 @@ int main(int argc, char* argv[])
 
         SDL_SetRenderDrawColor(g_screen, 255, 49, 0, 0);
         SDL_RenderClear(g_screen);
-        g_background.Render(g_screen, NULL);
+        g_menu_background.Render(g_screen, NULL);
 
         //Main menu
-        if ((!ingame))
+        if (is_main_menu)
         {
-            main_menu.RenderMainMenu(g_screen, menu_font);
+            menu.RenderMainMenu(g_screen, g_menu_font);
 
             //mouse over button handling
 
-            if (main_menu.mainmenu_play.MouseOver(g_event, mouse))
+            if (menu.mainmenu_play.MouseOver(g_event, mouse))
             {
-                main_menu.mainmenu_play.SetButtonColor(255, 0, 0);
+                menu.mainmenu_play.SetButtonColor(255, 0, 0);
             }
             else
             {
-                main_menu.mainmenu_play.SetButtonColor(0, 0, 0);
+                menu.mainmenu_play.SetButtonColor(0, 0, 0);
             }
 
-            if (main_menu.mainmenu_continue.MouseOver(g_event, mouse))
+            if (menu.mainmenu_continue.MouseOver(g_event, mouse))
             {
-                main_menu.mainmenu_continue.SetButtonColor(255, 0, 0);
+                menu.mainmenu_continue.SetButtonColor(255, 0, 0);
             }
             else
             {
-                main_menu.mainmenu_continue.SetButtonColor(0, 0, 0);
+                menu.mainmenu_continue.SetButtonColor(0, 0, 0);
             }
 
-            if (main_menu.mainmenu_exit.MouseOver(g_event, mouse))
+            if (menu.mainmenu_exit.MouseOver(g_event, mouse))
             {
-                main_menu.mainmenu_exit.SetButtonColor(255, 0, 0);
+                menu.mainmenu_exit.SetButtonColor(255, 0, 0);
             }
             else
             {
-                main_menu.mainmenu_exit.SetButtonColor(0, 0, 0);
+                menu.mainmenu_exit.SetButtonColor(0, 0, 0);
+            }
+
+            if (menu.mainmenu_help.MouseOver(g_event, mouse))
+            {
+                menu.mainmenu_help.SetButtonColor(255, 0, 0);
+            }
+            else
+            {
+                menu.mainmenu_help.SetButtonColor(0, 0, 0);
             }
 
             //Button clicked handling
-            if (main_menu.mainmenu_play.OnClick(g_event, mouse))
+            if (menu.mainmenu_play.OnClick(g_event, mouse))
             {
+                is_main_menu = false;
                 is_new_game = true;
                 ingame = true;
                 is_continued_game = false;
                 is_paused = false;
                 is_game_over = false;
+                is_help_menu = false;
             }
 
-            if (main_menu.mainmenu_continue.OnClick(g_event, mouse))
+            if (menu.mainmenu_continue.OnClick(g_event, mouse))
             {
                 std::ifstream file("data/game/state.dat");
                 int check;
                 file >> check;
                 if (check == 1)
                 {
+                    is_main_menu = false;
                     ingame = true;
                     is_continued_game = true;
                     is_new_game = false;
                     is_paused = false;
                     is_game_over = false;
+                    is_help_menu = false;
                     file.close();
                 }
             }
 
-            if (main_menu.mainmenu_exit.OnClick(g_event, mouse))
+            if (menu.mainmenu_exit.OnClick(g_event, mouse))
             {
                 is_quit = true;
+            }
+
+            if (menu.mainmenu_help.OnClick(g_event, mouse))
+            {
+                is_main_menu = false;
+                is_help_menu = true;
+            }
+        }
+
+        //help menu
+        if (is_help_menu)
+        {
+            menu.MainMenuFree();
+            menu.RenderHelpMenu(g_screen, g_menu_font, "img/instruction.png");
+
+            if (menu.help_backtomain.MouseOver(g_event, mouse))
+            {
+                menu.help_backtomain.SetButtonColor(255, 0, 0);
+            }
+            else
+            {
+                menu.help_backtomain.SetButtonColor(0, 0, 0);
+            }
+
+            if (menu.help_backtomain.OnClick(g_event, mouse))
+            {
+                is_main_menu = true;
+                is_help_menu = false;
+                menu.HelpMenuFree();
             }
         }
 
         // Game Over Menu
         if (is_game_over)
         {
-            game_over.RenderGameOver(g_screen, menu_font);
+            menu.RenderGameOver(g_screen, g_menu_font, score, high_score);
 
             //Mouse over handling
-            if (game_over.gameover_exit.MouseOver(g_event, mouse))
+            if (menu.gameover_exit.MouseOver(g_event, mouse))
             {
-                game_over.gameover_exit.SetButtonColor(255, 0, 0);
+                menu.gameover_exit.SetButtonColor(255, 0, 0);
             }
             else
             {
-                game_over.gameover_exit.SetButtonColor(0, 0, 0);
+                menu.gameover_exit.SetButtonColor(0, 0, 0);
             }
 
-            if (game_over.gameover_backtomain.MouseOver(g_event, mouse))
+            if (menu.gameover_backtomain.MouseOver(g_event, mouse))
             {
-                game_over.gameover_backtomain.SetButtonColor(255, 0, 0);
+                menu.gameover_backtomain.SetButtonColor(255, 0, 0);
             }
             else
             {
-                game_over.gameover_backtomain.SetButtonColor(0, 0, 0);
+                menu.gameover_backtomain.SetButtonColor(0, 0, 0);
             }
 
             //Button clicked handling
-            if (game_over.gameover_exit.OnClick(g_event, mouse))
+            if (menu.gameover_exit.OnClick(g_event, mouse))
             {
                 is_quit = true;
             }
 
-            if (game_over.gameover_backtomain.OnClick(g_event, mouse))
+            if (menu.gameover_backtomain.OnClick(g_event, mouse))
             {
+                is_main_menu = true;
                 is_paused = false;
                 ingame = false;
                 is_continued_game = false;
                 is_game_over = false;
-                game_over.GameOverFree();
+                menu.GameOverFree();
                 std::ofstream file("data/game/state.dat");
                 if (file)
                 {
@@ -301,58 +344,59 @@ int main(int argc, char* argv[])
         //Game Paused menu
         if (!is_game_over && is_paused)
         {
-            game_paused.RenderGamePaused(g_screen, menu_font);
+            menu.RenderGamePaused(g_screen, g_menu_font);
 
             //Mouse over handling
 
-            if (game_paused.gamepaused_exit.MouseOver(g_event, mouse))
+            if (menu.gamepaused_exit.MouseOver(g_event, mouse))
             {
-                game_paused.gamepaused_exit.SetButtonColor(255, 0, 0);
+                menu.gamepaused_exit.SetButtonColor(255, 0, 0);
             } 
             else
             {
-                game_paused.gamepaused_exit.SetButtonColor(0, 0, 0);
+                menu.gamepaused_exit.SetButtonColor(0, 0, 0);
             }
 
-            if (game_paused.gamepaused_resume.MouseOver(g_event, mouse))
+            if (menu.gamepaused_resume.MouseOver(g_event, mouse))
             {
-                game_paused.gamepaused_resume.SetButtonColor(255, 0, 0);
+                menu.gamepaused_resume.SetButtonColor(255, 0, 0);
             }
             else
             {
-                game_paused.gamepaused_resume.SetButtonColor(0, 0, 0);
+                menu.gamepaused_resume.SetButtonColor(0, 0, 0);
             }
 
-            if (game_paused.gamepaused_backtomain.MouseOver(g_event, mouse))
+            if (menu.gamepaused_backtomain.MouseOver(g_event, mouse))
             {
-                game_paused.gamepaused_backtomain.SetButtonColor(255, 0, 0);
+                menu.gamepaused_backtomain.SetButtonColor(255, 0, 0);
             }
             else
             {
-                game_paused.gamepaused_backtomain.SetButtonColor(0, 0, 0);
+                menu.gamepaused_backtomain.SetButtonColor(0, 0, 0);
             }
 
             //Button clicked handling
 
-            if (game_paused.gamepaused_exit.OnClick(g_event, mouse))
+            if (menu.gamepaused_exit.OnClick(g_event, mouse))
             {
                 is_quit = true;
             }
 
-            if (game_paused.gamepaused_resume.OnClick(g_event, mouse))
+            if (menu.gamepaused_resume.OnClick(g_event, mouse))
             {
                 ingame = true;
                 is_paused = false;
-                game_paused.GamePausedFree();
+                menu.GamePausedFree();
             }
 
-            if (game_paused.gamepaused_backtomain.OnClick(g_event, mouse))
+            if (menu.gamepaused_backtomain.OnClick(g_event, mouse))
             {
+                is_main_menu = true;
                 is_paused = false;
                 ingame = false;
                 is_continued_game = false;
                 is_game_over = false;
-                game_paused.GamePausedFree();
+                menu.GamePausedFree();
             }
         }
 
@@ -694,16 +738,19 @@ int main(int argc, char* argv[])
                 }
             }
 
+            //hien thi level
             text_level.SetText("LEVEL: " + std::to_string(level));
-            text_level.LoadFromRenderText(menu_font, g_screen);
+            text_level.LoadFromRenderText(g_menu_font, g_screen);
             text_level.SetTextColor(255, 0, 0);
-            text_level.RenderText(g_screen, 600, 10, NULL);
+            text_level.RenderText(g_screen, 450, 10, NULL);
 
+            //hien thi score 
             game_score.SetText("YOUR SCORE: " + std::to_string(score));
-            game_score.LoadFromRenderText(menu_font, g_screen);
+            game_score.LoadFromRenderText(g_menu_font, g_screen);
             game_score.SetTextColor(255, 0, 0);
             game_score.RenderText(g_screen, 800, 10, NULL);
 
+            //hien thi thanh mau
             SDL_RenderDrawRect(g_screen, &rect);
             SDL_SetRenderDrawColor(g_screen, 255, 0, 0, 0);
             HP.w = p_player.get_hp_() * 2;
@@ -723,7 +770,7 @@ int main(int argc, char* argv[])
                 file << score << std::endl;
                 file.close();
             }
-           
+            
             if ((p_player.get_hp_() <= 0) && ingame)
             {
                 is_paused = true;
