@@ -4,7 +4,7 @@
 ### Introduction video: https://www.youtube.com/watch?v=_WKrTkLdPdo
 
 ## Build
-g++ -ILibSdl2/SDL2_image-2.0.3/include -ILibSdl2/SDL2-2.0.8/include -ILibSdl2/SDL2_ttf-2.0.14/include -LLibSdl2/Dll/X86 -o arenaofarcher *.cpp -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf
+g++ -IMinGW/SDL2/include/SDL2 -IMinGW/SDL2_image/include/SDL2 -IMinGW/SDL2_ttf/include/SDL2 -Iheaders -LMinGW/SDL2/lib -LMinGW/SDL2_image/lib -LMinGW/SDL2_ttf/lib src/*.cpp -lSDL2 -lSDL2_image -lSDL2_ttf -lmingw32 -o arenaofarche
 
 
 ## Phân công công việc
