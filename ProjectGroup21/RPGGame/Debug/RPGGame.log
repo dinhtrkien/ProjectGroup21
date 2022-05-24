@@ -1,19 +1,2 @@
 ﻿  main.cpp
-C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(444,35): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(454,35): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(503,35): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(539,74): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(553,31): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(577,71): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(598,71): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(637,31): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(648,71): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(653,35): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(670,75): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(682,31): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(686,31): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(704,31): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(752,31): warning C4018: '<': signed/unsigned mismatch
-SDL2main.lib(SDL_windows_main.obj) : error LNK2005: _main already defined in main.obj
-SDL2main.lib(SDL_windows_main.obj) : error LNK2019: unresolved external symbol _SDL_main referenced in function _main_utf8
-C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\Debug\RPGGame.exe : fatal error LNK1120: 1 unresolved externals
+  RPGGame.vcxproj -> C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\Debug\RPGGame.exe

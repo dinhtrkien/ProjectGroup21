@@ -16,12 +16,10 @@
 #include <time.h>
 #include <stdlib.h>
 #include <fstream>
-#include "Button.h"
+#include "Button.h" 
 #include "MainMenu.h"
 #include "menu.h"
 #include <math.h>
-
-#undef main
 
 BaseObject g_menu_background;
 TTF_Font* g_menu_font = NULL;
@@ -441,7 +439,7 @@ int main(int argc, char* argv[])
                     infile >> high_score;
                     infile.close();
                 }
-                for (int i = 0; i < Enemy_List.size(); i++)
+                for (int i = 0; i < int(Enemy_List.size()); i++)
                 {
                     Enemy* e_clone = Enemy_List[i];
                     e_clone->Free();
@@ -451,7 +449,7 @@ int main(int argc, char* argv[])
                 }
                 num_enemy = 1;
                 Enemy_List = MakeEnemyList(num_enemy);
-                for (int i = 0; i < Enemy_List.size(); i++)
+                for (int i = 0; i < int(Enemy_List.size()); i++)
                 {
                     Enemy_List[i]->LoadImage("img/enemy_down.png", g_screen);
                     Enemy_List[i]->Make_Animation();
@@ -500,7 +498,7 @@ int main(int argc, char* argv[])
                     infile.close();
                 }
                 Enemy_List = MakeEnemyList(num_enemy);
-                for (int i = 0; i < Enemy_List.size(); i++)
+                for (int i = 0; i < int(Enemy_List.size()); i++)
                 {
                     Enemy_List[i]->LoadImage("img/enemy_down.png", g_screen);
                     Enemy_List[i]->Make_Animation();
@@ -532,11 +530,12 @@ int main(int argc, char* argv[])
                 is_continued_game = false;
             }
             // Ket thuc mot man choi khi so ke thu = 0
-            if (num_enemy == 0) {
+            if (num_enemy == 0) 
+            {
                 level++;
                 num_enemy = level;
                 e_damage += 2;
-                Enemy_List = MakeEnemyList(num_enemy); for (int i = 0; i < Enemy_List.size(); i++) // Tao list ke thu moi
+                Enemy_List = MakeEnemyList(num_enemy); for (int i = 0; i < int(Enemy_List.size()); i++) // Tao list ke thu moi
                 {
                     Enemy_List[i]->LoadImage("img/enemy_down.png", g_screen);
                     Enemy_List[i]->Make_Animation();
@@ -550,9 +549,8 @@ int main(int argc, char* argv[])
             p_player.HandleBullet(g_screen);
             p_player.Show(g_screen);
 
-            for (int i = 0; i < Enemy_List.size(); i++)
+            for (int i = 0; i < int(Enemy_List.size()); i++)
             {
-
 
                 Enemy_List[i]->Make_Action(p_player.GetRect().x, p_player.GetRect().y, g_screen, Enemy_List);
 
@@ -574,7 +572,7 @@ int main(int argc, char* argv[])
                     {
                         explosion.Set_Clip();
                         explosion.Set_Frame_(k);
-                        explosion.set_angle(p_bullet->get_direct_angle());
+                        explosion.set_angle(int(p_bullet->get_direct_angle()));
                         explosion.Show(g_screen);
                     }
                 }
@@ -595,7 +593,7 @@ int main(int argc, char* argv[])
                     {
                         explosion.Set_Clip();
                         explosion.Set_Frame_(k);
-                        explosion.set_angle(p_bullet->get_direct_angle());
+                        explosion.set_angle(int(p_bullet->get_direct_angle()));
                         explosion.Show(g_screen);
                     }
                 }
@@ -634,7 +632,7 @@ int main(int argc, char* argv[])
 			*/
             std::vector<Bullet*> bullet_list = p_player.get_bullet_list();
 
-            for (int i = 0; i < bullet_list.size(); i++)
+            for (int i = 0; i < int(bullet_list.size()); i++)
             {
                 Bullet* p_bullet = bullet_list[i];
               
@@ -645,12 +643,12 @@ int main(int argc, char* argv[])
                     {
                         explosion.Set_Clip();
                         explosion.Set_Frame_(k);
-                        explosion.set_angle(p_bullet->get_direct_angle());
+                        explosion.set_angle(int(p_bullet->get_direct_angle()));
                         explosion.Show(g_screen);
                     }
                     p_player.Free_Bullet(i);
                 }
-                for (int j = 0; j < Enemy_List.size(); j++)
+                for (int j = 0; j < int(Enemy_List.size()); j++)
                 {
                     Enemy* e_clone = Enemy_List[j];
                     SDL_Rect Bullet_Rect = bullet_list[i]->GetRect();
@@ -667,7 +665,7 @@ int main(int argc, char* argv[])
                         {
                             explosion.Set_Clip();
                             explosion.Set_Frame_(k);
-                            explosion.set_angle(p_bullet->get_direct_angle());
+                            explosion.set_angle(int(p_bullet->get_direct_angle()));
                             explosion.Show(g_screen);
                         }
                         Enemy_List[j]->set_hp(Enemy_List[j]->get_hp() - p_player.get_damage());
@@ -679,13 +677,15 @@ int main(int argc, char* argv[])
 
             }
 
-            for (int i = 0; i < Enemy_List.size(); i++)
+            //spawn items when enemy died
+
+            for (int i = 0; i < int(Enemy_List.size()); i++)
             {
                 if (Enemy_List[i]->get_hp() == 0)
                 {
-                    srand(time(0));
-                    int des = rand() % 100;
-                    if (des % 2 == 0)
+                    //srand((unsigned int)(time(0)));
+                    //int des = rand() % 100;
+                    if (i % 2 == 0)
                     {
                         Items* item = new Items();
                         item->SetRect(Enemy_List[i]->GetRect().x, Enemy_List[i]->GetRect().y);
@@ -701,7 +701,7 @@ int main(int argc, char* argv[])
                 }
             }
 
-            for (int i = 0; i < items_list.size(); i++)
+            for (int i = 0; i < int(items_list.size()); i++)
             {
                 items_list[i]->show(g_screen);
                 SDL_Rect item_clone = items_list[i]->GetRect();
@@ -749,7 +749,7 @@ int main(int argc, char* argv[])
 
             //save file
             p_player.Export("data/player/player.dat");
-            for (int i = 0; i < Enemy_List.size(); i++)
+            for (int i = 0; i < int(Enemy_List.size()); i++)
             {
                 Enemy_List[i]->Export("data/Enemy/enemy_" + std::to_string(i) + ".dat");
             }
