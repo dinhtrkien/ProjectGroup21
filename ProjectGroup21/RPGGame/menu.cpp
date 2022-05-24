@@ -102,7 +102,7 @@ void GameBoard::GameOverFree()
 
 void GameBoard::RenderHelpMenu(SDL_Renderer* des, TTF_Font* p_font, string path)
 {
-	help_background.LoadImageW(path, des);
+	help_background.LoadImage(path, des);
 	help_background.Render(des, NULL);
 
 	help_backtomain.SetText("<  BACK  TO  MENU");

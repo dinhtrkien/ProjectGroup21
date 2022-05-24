@@ -1,6 +1,7 @@
 #include <Windows.h>
 #include "bullet.h"
 
+
 Bullet::Bullet()
 
 {

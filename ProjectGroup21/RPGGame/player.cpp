@@ -1,6 +1,7 @@
 #include <windows.h>
 #include "player.h"
 #include <vector>
+#include <math.h>
 
 Player::Player()
 {

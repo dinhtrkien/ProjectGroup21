@@ -5,8 +5,8 @@
 #include <string>
 #include <SDL.h>
 #include <SDL_image.h>
-#include <SDL_mixer.h>
 #include <SDL_ttf.h>
+#include <math.h>
 
 static SDL_Window* g_window = NULL;
 static SDL_Renderer* g_screen = NULL;
@@ -27,7 +27,7 @@ const int COLOR_KEY_B = 180;
 #define MAX_MAP_X  23
 #define MAX_MAP_Y  12
 
-typedef struct Input
+struct Input
 {
 	int left_;
 	int right_;
@@ -35,7 +35,7 @@ typedef struct Input
 	int down_;
 };
 
-typedef struct Map
+struct Map
 {
 	int start_x_;
 	int start_y_;

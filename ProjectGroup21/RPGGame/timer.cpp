@@ -1,6 +1,7 @@
 #include <Windows.h>
 #include "timer.h"
 #include "commonfunc.h"
+#include <math.h>
 
 Timer::Timer()
 {

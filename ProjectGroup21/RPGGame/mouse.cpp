@@ -1,5 +1,6 @@
 #include <Windows.h>
 #include "mouse.h"
+#include <math.h>
 
 Mouse::Mouse()
 {

@@ -1,5 +1,6 @@
 #include <Windows.h>
 #include "game_map.h"
+#include <math.h>
 
 void GameMap::LoadMap(char* name)
 {

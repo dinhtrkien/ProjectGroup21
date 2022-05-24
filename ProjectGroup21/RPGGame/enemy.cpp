@@ -2,6 +2,7 @@
 #include "commonfunc.h"
 #include "BaseObject.h"
 #include <Windows.h>
+#include <math.h>
 
 Enemy::Enemy()
 {

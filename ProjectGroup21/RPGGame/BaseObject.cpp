@@ -1,5 +1,6 @@
 #include <Windows.h>
 #include "BaseObject.h"
+#include <math.h>
 
 BaseObject::BaseObject()
 {

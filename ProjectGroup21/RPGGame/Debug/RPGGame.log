@@ -1,19 +1,36 @@
-﻿  main.cpp
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\projectgroup21\rpggame\commonfunc.h(36): warning C4091: 'typedef ': ignored on left of 'Input' when no variable is declared
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\projectgroup21\rpggame\commonfunc.h(49): warning C4091: 'typedef ': ignored on left of 'Map' when no variable is declared
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\projectgroup21\rpggame\main.cpp(439): warning C4018: '<': signed/unsigned mismatch
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\projectgroup21\rpggame\main.cpp(449): warning C4018: '<': signed/unsigned mismatch
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\projectgroup21\rpggame\main.cpp(498): warning C4018: '<': signed/unsigned mismatch
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\projectgroup21\rpggame\main.cpp(534): warning C4018: '<': signed/unsigned mismatch
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\projectgroup21\rpggame\main.cpp(548): warning C4018: '<': signed/unsigned mismatch
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\projectgroup21\rpggame\main.cpp(572): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\projectgroup21\rpggame\main.cpp(593): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\projectgroup21\rpggame\main.cpp(632): warning C4018: '<': signed/unsigned mismatch
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\projectgroup21\rpggame\main.cpp(643): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\projectgroup21\rpggame\main.cpp(648): warning C4018: '<': signed/unsigned mismatch
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\projectgroup21\rpggame\main.cpp(665): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\projectgroup21\rpggame\main.cpp(677): warning C4018: '<': signed/unsigned mismatch
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\projectgroup21\rpggame\main.cpp(681): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\projectgroup21\rpggame\main.cpp(699): warning C4018: '<': signed/unsigned mismatch
-d:\tài liệu của thành\uet\năm 1-2\lập trình nâng cao\quan\projectgroup21\projectgroup21\rpggame\main.cpp(747): warning C4018: '<': signed/unsigned mismatch
-  RPGGame.vcxproj -> D:\Tài liệu của THÀNH\UET\Năm 1-2\Lập trình nâng cao\quan\ProjectGroup21\ProjectGroup21\RPGGame\Debug\RPGGame.exe
+﻿  BaseObject.cpp
+  Button.cpp
+  Collision.cpp
+  Point.cpp
+  TextObject.cpp
+  Vector2D.cpp
+  bullet.cpp
+  commonfunc.cpp
+  enemy.cpp
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\enemy.cpp(130,20): warning C4018: '<': signed/unsigned mismatch
+  explosion.cpp
+  game_map.cpp
+  items.cpp
+  main.cpp
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(441,35): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(451,35): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(500,35): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(536,74): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(550,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(574,71): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(595,71): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(634,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(645,71): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(650,35): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(667,75): warning C4244: 'argument': conversion from 'double' to 'const int', possible loss of data
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(679,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(683,31): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(701,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\main.cpp(749,31): warning C4018: '<': signed/unsigned mismatch
+  menu.cpp
+  mouse.cpp
+  player.cpp
+C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\player.cpp(210,16): warning C4018: '<': signed/unsigned mismatch
+  timer.cpp
+  Generating Code...
+  RPGGame.vcxproj -> C:\Users\Asus\Desktop\ProjectGroup21\ProjectGroup21\ProjectGroup21\RPGGame\Debug\RPGGame.exe

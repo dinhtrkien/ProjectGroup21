@@ -1,4 +1,5 @@
 #include <Windows.h>
+#include <SDL.h>
 #include <vector>
 #include "commonfunc.h"
 #include "BaseObject.h"
@@ -7,6 +8,7 @@
 #include "timer.h"
 #include "mouse.h"
 #include "enemy.h"
+#include <stdio.h>
 #include "explosion.h"
 #include "Collision.h"
 #include "TextObject.h"
@@ -17,6 +19,7 @@
 #include "Button.h"
 #include "MainMenu.h"
 #include "menu.h"
+#include <math.h>
 
 BaseObject g_menu_background;
 TTF_Font* g_menu_font = NULL;

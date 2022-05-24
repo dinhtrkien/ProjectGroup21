@@ -1,4 +1,5 @@
 #include "Point.h"
+#include <math.h>
 
 Point::Point()
 {

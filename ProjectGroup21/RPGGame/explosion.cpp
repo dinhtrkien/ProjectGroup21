@@ -1,4 +1,5 @@
 #include "explosion.h"
+#include <math.h>
 
 Explosion::Explosion()
 {
