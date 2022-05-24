@@ -7,7 +7,7 @@ Explosion::Explosion()
 	width_frame_ = 0;
 	height_frame_ = 0;
 	angle = 0;
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 5; i++)
 		frame_clip_[i] = { 0,0,0,0 };
 }
 

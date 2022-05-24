@@ -19,7 +19,7 @@ private:
 	int frame_;
 	int width_frame_;
 	int height_frame_;
-	SDL_Rect frame_clip_[4];
+	SDL_Rect frame_clip_[5];
 	int angle;
 };
 #endif // !EXPLOSION_H

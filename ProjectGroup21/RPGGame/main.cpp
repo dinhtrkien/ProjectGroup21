@@ -21,6 +21,8 @@
 #include "menu.h"
 #include <math.h>
 
+#undef main
+
 BaseObject g_menu_background;
 TTF_Font* g_menu_font = NULL;
 
@@ -568,7 +570,7 @@ int main(int argc, char* argv[])
                 {
                     Bullet* p_bullet = Enemy_List[i]->get_bullet_list()[0];
                     explosion.SetRect(p_bullet->GetRect().x, p_bullet->GetRect().y);
-                    for (int k = 0; k < 4; k++)
+                    for (int k = 0; k < 5; k++)
                     {
                         explosion.Set_Clip();
                         explosion.Set_Frame_(k);
@@ -589,7 +591,7 @@ int main(int argc, char* argv[])
                     p_player.set_hp_(p_player.get_hp_() - e_damage);
                     Bullet* p_bullet = Enemy_List[i]->get_bullet_list()[0];
                     explosion.SetRect(p_bullet->GetRect().x, p_bullet->GetRect().y);
-                    for (int k = 0; k < 4; k++)
+                    for (int k = 0; k < 5; k++)
                     {
                         explosion.Set_Clip();
                         explosion.Set_Frame_(k);
@@ -639,7 +641,7 @@ int main(int argc, char* argv[])
                 if (p_bullet->CheckMapCollision(map_data))
                 {
                     explosion.SetRect(p_bullet->GetRect().x, p_bullet->GetRect().y);
-                    for (int k = 0; k < 4; k++)
+                    for (int k = 0; k < 5; k++)
                     {
                         explosion.Set_Clip();
                         explosion.Set_Frame_(k);
@@ -661,7 +663,7 @@ int main(int argc, char* argv[])
                     if (Collision::AABB(Bullet_Rect, Enemy_Rect)) // Neu dan ban trung
                     {
                         explosion.SetRect(p_bullet->GetRect().x, p_bullet->GetRect().y);
-                        for (int k = 0; k < 4; k++)
+                        for (int k = 0; k < 5; k++)
                         {
                             explosion.Set_Clip();
                             explosion.Set_Frame_(k);
