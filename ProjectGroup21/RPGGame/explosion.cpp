@@ -58,61 +58,6 @@ void Explosion::Set_Clip()
 		frame_clip_[4].w = width_frame_;
 		frame_clip_[4].h = height_frame_;
 
-		/*frame_clip_[5].x = width_frame_ * 5;
-		frame_clip_[5].y = 0;
-		frame_clip_[5].w = width_frame_;
-		frame_clip_[5].h = height_frame_;
-
-		frame_clip_[6].x = width_frame_*6;
-		frame_clip_[6].y = 0;
-		frame_clip_[6].w = width_frame_;
-		frame_clip_[6].h = height_frame_;
-
-		frame_clip_[7].x = width_frame_*7;
-		frame_clip_[7].y = 0;
-		frame_clip_[7].w = width_frame_;
-		frame_clip_[7].h = height_frame_;
-
-		frame_clip_[8].x = width_frame_*8;
-		frame_clip_[8].y = 0;
-		frame_clip_[8].w = width_frame_;
-		frame_clip_[8].h = height_frame_;
-
-		frame_clip_[9].x = width_frame_*9;
-		frame_clip_[9].y = 0;
-		frame_clip_[9].w = width_frame_;
-		frame_clip_[9].h = height_frame_;
-
-		frame_clip_[10].x = width_frame_*10;
-		frame_clip_[10].y = 0;
-		frame_clip_[10].w = width_frame_;
-		frame_clip_[10].h = height_frame_;
-
-		frame_clip_[11].x = width_frame_*11;
-		frame_clip_[11].y = 0;
-		frame_clip_[11].w = width_frame_;
-		frame_clip_[11].h = height_frame_;
-
-		frame_clip_[12].x = width_frame_*12;
-		frame_clip_[12].y = 0;
-		frame_clip_[12].w = width_frame_;
-		frame_clip_[12].h = height_frame_;
-
-		frame_clip_[13].x = width_frame_*13;
-		frame_clip_[13].y = 0;
-		frame_clip_[13].w = width_frame_;
-		frame_clip_[13].h = height_frame_;
-
-		frame_clip_[14].x = width_frame_*14;
-		frame_clip_[14].y = 0;
-		frame_clip_[14].w = width_frame_;
-		frame_clip_[14].h = height_frame_;
-
-		frame_clip_[15].x = width_frame_*15;
-		frame_clip_[15].y = 0;
-		frame_clip_[15].w = width_frame_;
-		frame_clip_[15].h = height_frame_;*/
-
 	}
 }
 

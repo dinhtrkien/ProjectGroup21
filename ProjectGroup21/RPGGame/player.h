@@ -73,18 +73,7 @@ public:
 	void set_x_pos(const int& _x) { x_pos_ = (float)_x; }
 	void set_y_pos(const int& _x) { y_pos_ = (float)_x; }
 
-	void SetMapXY(const int map_x, const int map_y)
-	{
-		map_x_ = map_x;
-		map_y_ = map_y;
-	}
-
 	void CheckMapCollision(Map& map_data);
-
-	// Camera(Map& map_data);
-
-	
-	
 
 private:
 	std::vector<Bullet*> p_bullet_list_;

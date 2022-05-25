@@ -5,12 +5,7 @@
 
 void GameMap::LoadMap(char* name)
 {
-	/*FILE* fp = NULL;
-	fopen_s(&fp, name, "rb");
-	if (fp == NULL)
-	{
-		return;
-	}*/
+	
 	std::ifstream fp(name);
 	if (!fp) return;
 	game_map_.max_x_ = 0;

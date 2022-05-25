@@ -54,7 +54,7 @@ bool Bullet::CheckMapCollision(Map& map_data)
 	{
 		if (x_speed_ < 0)
 		{
-			if (map_data.tile[y1][x1] != GRASS_TILE || map_data.tile[y2][x1] != GRASS_TILE)
+			if (map_data.tile[y1][x1] != FLOOR_TILE || map_data.tile[y2][x1] != FLOOR_TILE)
 			{
 				is_move_ = false;
 				return true;
@@ -62,7 +62,7 @@ bool Bullet::CheckMapCollision(Map& map_data)
 		}
 		else if (x_speed_ > 0)
 		{
-			if (map_data.tile[y1][x2] != GRASS_TILE || map_data.tile[y2][x2] != GRASS_TILE)
+			if (map_data.tile[y1][x2] != FLOOR_TILE || map_data.tile[y2][x2] != FLOOR_TILE)
 			{
 				is_move_ = false;
 				return true;
@@ -84,7 +84,7 @@ bool Bullet::CheckMapCollision(Map& map_data)
 	{
 		if (y_speed_ > 0)
 		{
-			if (map_data.tile[y2][x1] != GRASS_TILE || map_data.tile[y2][x2] != GRASS_TILE)
+			if (map_data.tile[y2][x1] != FLOOR_TILE || map_data.tile[y2][x2] != FLOOR_TILE)
 			{
 				is_move_ = false;
 				return true;
@@ -92,7 +92,7 @@ bool Bullet::CheckMapCollision(Map& map_data)
 		}
 		else if (y_speed_ < 0)
 		{
-			if (map_data.tile[y1][x1] != GRASS_TILE || map_data.tile[y1][x2] != GRASS_TILE)
+			if (map_data.tile[y1][x1] != FLOOR_TILE || map_data.tile[y1][x2] != FLOOR_TILE)
 			{
 				is_move_ = false;
 				return true;

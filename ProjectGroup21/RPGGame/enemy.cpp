@@ -178,7 +178,7 @@ void Enemy::CheckMapCollision(Map& map_data)
 	{
 		if (x_val_ < 0)
 		{
-			if (map_data.tile[y1][x1] != GRASS_TILE || map_data.tile[y2][x1] != GRASS_TILE)
+			if (map_data.tile[y1][x1] != FLOOR_TILE || map_data.tile[y2][x1] != FLOOR_TILE)
 			{
 				x_pos_ = (x1 + 1) * TILE_SIZE;
 				x_val_ = 0;
@@ -186,7 +186,7 @@ void Enemy::CheckMapCollision(Map& map_data)
 		}
 		else if (x_val_ > 0)
 		{
-			if (map_data.tile[y1][x2] != GRASS_TILE || map_data.tile[y2][x2] != GRASS_TILE)
+			if (map_data.tile[y1][x2] != FLOOR_TILE || map_data.tile[y2][x2] != FLOOR_TILE)
 			{
 				x_pos_ = x2 * TILE_SIZE;
 				x_pos_ -= (width_frame_ + 1);
@@ -209,7 +209,7 @@ void Enemy::CheckMapCollision(Map& map_data)
 	{
 		if (y_val_ > 0)
 		{
-			if (map_data.tile[y2][x1] != GRASS_TILE || map_data.tile[y2][x2] != GRASS_TILE)
+			if (map_data.tile[y2][x1] != FLOOR_TILE || map_data.tile[y2][x2] != FLOOR_TILE)
 			{
 				y_pos_ = y2 * TILE_SIZE;
 				y_pos_ -= (height_frame_ + 1);
@@ -218,7 +218,7 @@ void Enemy::CheckMapCollision(Map& map_data)
 		}
 		else if (y_val_ < 0)
 		{
-			if (map_data.tile[y1][x1] != GRASS_TILE || map_data.tile[y1][x2] != GRASS_TILE)
+			if (map_data.tile[y1][x1] != FLOOR_TILE || map_data.tile[y1][x2] != FLOOR_TILE)
 			{
 				y_pos_ = (y1 + 1) * TILE_SIZE;
 				y_val_ = 0;

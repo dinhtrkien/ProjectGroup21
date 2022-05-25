@@ -89,8 +89,8 @@ void Player::Show(SDL_Renderer* des)
 	if (frame_ > 2) frame_ = 0;
 
 
-	rect_.x = int(x_pos_) - map_x_;
-	rect_.y = int(y_pos_) - map_y_;
+	rect_.x = int(x_pos_);
+	rect_.y = int(y_pos_);
 
 
 	SDL_Rect* current_clip = frame_clip_+frame_;
@@ -269,7 +269,7 @@ void Player::CheckMapCollision(Map& map_data)
 	{
 		if (x_val_ < 0)
 		{
-			if (map_data.tile[y1][x1] != GRASS_TILE || map_data.tile[y2][x1] != GRASS_TILE)
+			if (map_data.tile[y1][x1] != FLOOR_TILE || map_data.tile[y2][x1] != FLOOR_TILE)
 			{
 				x_pos_ = (float)(x1 + 1) * TILE_SIZE - x_val_;
 				x_val_ = 0;
@@ -277,7 +277,7 @@ void Player::CheckMapCollision(Map& map_data)
 		}
 		else if (x_val_ > 0)
 		{
-			if (map_data.tile[y1][x2] != GRASS_TILE || map_data.tile[y2][x2] != GRASS_TILE)
+			if (map_data.tile[y1][x2] != FLOOR_TILE || map_data.tile[y2][x2] != FLOOR_TILE)
 			{
 				x_pos_ = (float)x2 * TILE_SIZE - x_val_;
 				x_pos_ -= (width_frame_ + 1);
@@ -300,7 +300,7 @@ void Player::CheckMapCollision(Map& map_data)
 	{
 		if (y_val_ > 0)
 		{
-			if (map_data.tile[y2][x1] != GRASS_TILE || map_data.tile[y2][x2] != GRASS_TILE)
+			if (map_data.tile[y2][x1] != FLOOR_TILE || map_data.tile[y2][x2] != FLOOR_TILE)
 			{
 				y_pos_ = (float)y2 * TILE_SIZE - y_val_;
 				y_pos_ -= (height_frame_ + 1);
@@ -309,7 +309,7 @@ void Player::CheckMapCollision(Map& map_data)
 		}
 		else if (y_val_ < 0)
 		{
-			if (map_data.tile[y1][x1] != GRASS_TILE || map_data.tile[y1][x2] != GRASS_TILE)
+			if (map_data.tile[y1][x1] != FLOOR_TILE || map_data.tile[y1][x2] != FLOOR_TILE)
 			{
 				y_pos_ = (float)(y1 + 1) * TILE_SIZE - y_val_;
 				y_val_ = 0;
@@ -331,23 +331,4 @@ void Player::CheckMapCollision(Map& map_data)
 	if (y_pos_ + height_frame_ > map_data.max_y_)
 		y_pos_ = (float)(map_data.max_y_ - height_frame_);
 
-	//Camera(map_data);
 }
-	
-
-/*
-void Player::Camera(Map& map_data)
-{
-	map_data.start_x_ = (int)x_pos_ - SCREEN_WIDTH / 2;
-	map_data.start_y_ = (int)y_pos_ - SCREEN_HEIGHT / 2;
-
-	if (map_data.start_x_ < 0)
-		map_data.start_x_ = 0;
-	if (map_data.start_y_ < 0)
-		map_data.start_y_ = 0;
-	if (map_data.start_x_ + SCREEN_WIDTH >= map_data.max_x_)
-		map_data.start_x_ = map_data.max_x_ - SCREEN_WIDTH;
-	if (map_data.start_y_ + SCREEN_HEIGHT >= map_data.max_y_)
-		map_data.start_y_ = map_data.max_y_ - SCREEN_HEIGHT;
-}
-*/

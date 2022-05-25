@@ -439,7 +439,7 @@ int main(int argc, char* argv[])
                     infile >> high_score;
                     infile.close();
                 }
-                for (int i = 0; i < int(Enemy_List.size()); i++)
+                for (size_t i = 0; i < int(Enemy_List.size()); i++)
                 {
                     Enemy* e_clone = Enemy_List[i];
                     e_clone->Free();
@@ -449,7 +449,7 @@ int main(int argc, char* argv[])
                 }
                 num_enemy = 1;
                 Enemy_List = MakeEnemyList(num_enemy);
-                for (int i = 0; i < int(Enemy_List.size()); i++)
+                for (size_t i = 0; i < int(Enemy_List.size()); i++)
                 {
                     Enemy_List[i]->LoadImage("img/enemy_down.png", g_screen);
                     Enemy_List[i]->Make_Animation();
@@ -498,7 +498,7 @@ int main(int argc, char* argv[])
                     infile.close();
                 }
                 Enemy_List = MakeEnemyList(num_enemy);
-                for (int i = 0; i < int(Enemy_List.size()); i++)
+                for (size_t i = 0; i < Enemy_List.size(); i++)
                 {
                     Enemy_List[i]->LoadImage("img/enemy_down.png", g_screen);
                     Enemy_List[i]->Make_Animation();
@@ -535,7 +535,8 @@ int main(int argc, char* argv[])
                 level++;
                 num_enemy = level;
                 e_damage += 2;
-                Enemy_List = MakeEnemyList(num_enemy); for (int i = 0; i < int(Enemy_List.size()); i++) // Tao list ke thu moi
+                Enemy_List = MakeEnemyList(num_enemy); 
+				for (size_t i = 0; i < Enemy_List.size(); i++) // Tao list ke thu moi
                 {
                     Enemy_List[i]->LoadImage("img/enemy_down.png", g_screen);
                     Enemy_List[i]->Make_Animation();
@@ -549,7 +550,7 @@ int main(int argc, char* argv[])
             p_player.HandleBullet(g_screen);
             p_player.Show(g_screen);
 
-            for (int i = 0; i < int(Enemy_List.size()); i++)
+            for (size_t i = 0; i < Enemy_List.size(); i++)
             {
 
                 Enemy_List[i]->Make_Action(p_player.GetRect().x, p_player.GetRect().y, g_screen, Enemy_List);
@@ -564,7 +565,7 @@ int main(int argc, char* argv[])
                 }
 
                 Enemy_List[i]->HandleBullet(g_screen);
-                if (Enemy_List[i]->get_bullet_list()[0]->CheckMapCollision(map_data))
+                if (Enemy_List[i]->get_bullet_list()[0]->CheckMapCollision(map_data)) // neu dan enemy va cham maptile
                 {
                     Bullet* p_bullet = Enemy_List[i]->get_bullet_list()[0];
                     explosion.SetRect(p_bullet->GetRect().x, p_bullet->GetRect().y);
@@ -583,7 +584,7 @@ int main(int argc, char* argv[])
                 player_rect.w = p_player.get_width_frame();
                 player_rect.h = p_player.get_height_frame();
 
-                if (Collision::AABB(Enemy_List[i]->get_bullet_list()[0]->GetRect(), player_rect))
+                if (Collision::AABB(Enemy_List[i]->get_bullet_list()[0]->GetRect(), player_rect)) // neu dan cua enemy va cham voi player
                 {
                     Enemy_List[i]->get_bullet_list()[0]->set_is_move(false);
                     p_player.set_hp_(p_player.get_hp_() - e_damage);
@@ -598,45 +599,15 @@ int main(int argc, char* argv[])
                     }
                 }
             }
-			/*
-            for (int i = 0; i < Enemy_List.size(); i++)
-            {
-                for (int j = i; j < Enemy_List.size(); j++)
-                {
-                    SDL_Rect rect1 = Enemy_List[i]->GetRect();
-                    rect1.w = Enemy_List[i]->get_width_frame();
-                    rect1.h = Enemy_List[i]->get_height_frame();
+			
 
-                    SDL_Rect rect2 = Enemy_List[j]->GetRect();
-                    rect2.w = Enemy_List[j]->get_width_frame();
-                    rect2.h = Enemy_List[j]->get_height_frame();
-
-                    if (Collision::AABB(rect1, rect2))
-                    {
-                        Enemy_List[i]->SetRect(rect1.x - Enemy_List[i]->get_x_speed(), rect1.y - Enemy_List[i]->get_y_speed());
-                        Enemy_List[j]->SetRect(rect2.x - Enemy_List[j]->get_x_speed(), rect2.y - Enemy_List[j]->get_y_speed());
-                        if (Collision::Distance(rect1, p_player.GetRect()) > Collision::Distance(rect2, p_player.GetRect()))
-                        {
-                            Enemy_List[i]->set_x_speed(0);
-                            Enemy_List[i]->set_y_speed(0);
-                        }
-                        else
-                        {
-                            Enemy_List[j]->set_x_speed(0);
-                            Enemy_List[j]->set_y_speed(0);
-                        }
-                    }
-                }
-
-            }
-			*/
             std::vector<Bullet*> bullet_list = p_player.get_bullet_list();
 
-            for (int i = 0; i < int(bullet_list.size()); i++)
+            for (size_t i = 0; i < bullet_list.size(); i++)
             {
                 Bullet* p_bullet = bullet_list[i];
               
-                if (p_bullet->CheckMapCollision(map_data))
+                if (p_bullet->CheckMapCollision(map_data)) // neu dan player va cham maptile
                 {
                     explosion.SetRect(p_bullet->GetRect().x, p_bullet->GetRect().y);
                     for (int k = 0; k < 5; k++)
@@ -658,7 +629,7 @@ int main(int argc, char* argv[])
                     Enemy_Rect.w = e_clone->get_width_frame();
                     Enemy_Rect.h = e_clone->get_height_frame();
                    
-                    if (Collision::AABB(Bullet_Rect, Enemy_Rect)) // Neu dan ban trung
+                    if (Collision::AABB(Bullet_Rect, Enemy_Rect)) // Neu dan cua player ban trung enemy
                     {
                         explosion.SetRect(p_bullet->GetRect().x, p_bullet->GetRect().y);
                         for (int k = 0; k < 5; k++)
@@ -679,13 +650,13 @@ int main(int argc, char* argv[])
 
             //spawn items when enemy died
 
-            for (int i = 0; i < int(Enemy_List.size()); i++)
+            for (size_t i = 0; i < Enemy_List.size(); i++)
             {
                 if (Enemy_List[i]->get_hp() == 0)
                 {
-                    //srand((unsigned int)(time(0)));
-                    //int des = rand() % 100;
-                    if (i % 2 == 0)
+                    srand((unsigned int)(time(0)));
+                    int des = rand() % 100;
+                    if (des % 2 == 0) // random item spawning rate (50%)
                     {
                         Items* item = new Items();
                         item->SetRect(Enemy_List[i]->GetRect().x, Enemy_List[i]->GetRect().y);
@@ -701,7 +672,7 @@ int main(int argc, char* argv[])
                 }
             }
 
-            for (int i = 0; i < int(items_list.size()); i++)
+            for (size_t i = 0; i < items_list.size(); i++)
             {
                 items_list[i]->show(g_screen);
                 SDL_Rect item_clone = items_list[i]->GetRect();
@@ -710,12 +681,12 @@ int main(int argc, char* argv[])
                 player_rect.y = p_player.GetRect().y;
                 player_rect.w = p_player.get_width_frame();
                 player_rect.h = p_player.get_height_frame();
-                if (Collision::AABB(item_clone, player_rect) || items_list[i]->get_real_time() - items_list[i]->get_t_start() >= 5000)
+                if (Collision::AABB(item_clone, player_rect) || items_list[i]->get_real_time() - items_list[i]->get_t_start() >= 8000) // neu player va cham item || thoi gian ton tai item >= 8000 ms 
                 {
                     Items* clone = items_list[i];
                     clone->Free();
                     items_list.erase(items_list.begin() + i);
-                    if (Collision::AABB(item_clone, player_rect))
+                    if (Collision::AABB(item_clone, player_rect)) // neu player va cham item
                     {
 
                         if (p_player.get_hp_() + 10 < 100)
@@ -741,7 +712,7 @@ int main(int argc, char* argv[])
             game_score.SetTextColor(255, 0, 0);
             game_score.RenderText(g_screen, 800, 10, NULL);
 
-            //hien thi thanh mau
+            //hien thi hp bar
             SDL_RenderDrawRect(g_screen, &rect);
             SDL_SetRenderDrawColor(g_screen, 255, 0, 0, 0);
             HP.w = p_player.get_hp_() * 2;
@@ -749,7 +720,7 @@ int main(int argc, char* argv[])
 
             //save file
             p_player.Export("data/player/player.dat");
-            for (int i = 0; i < int(Enemy_List.size()); i++)
+            for (size_t i = 0; i < Enemy_List.size(); i++)
             {
                 Enemy_List[i]->Export("data/Enemy/enemy_" + std::to_string(i) + ".dat");
             }
